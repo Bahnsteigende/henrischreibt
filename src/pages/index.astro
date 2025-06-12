@@ -1,0 +1,54 @@
+---
+import "/public/styles/global.css";
+---
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Henris Bahnsteigende</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles/global.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white text-black font-sans flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gray-100 py-12 px-6 shadow-md">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Henris Bahnsteigende</h1>
+        <nav class="flex justify-center space-x-8 text-lg font-medium">
+          <a href="/blog" class="relative group">
+            <span class="pb-1">Blog</span>
+            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
+          </a>
+          <a href="/schreib-portfolio" class="relative group">
+            <span class="pb-1">Text-Portfolio</span>
+            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
+          </a>
+          <a href="/fotos" class="relative group">
+            <span class="pb-1">Foto-Portfolio</span>
+            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
+          </a>
+                    <a href="/uebermich" class="relative group">
+          <span class="pb-1">Über mich</span>
+          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow px-6 py-12 max-w-3xl mx-auto">
+      <section class="space-y-4 text-center">
+        <p class="text-xl">Willkommen bei <strong>Henris Bahnsteigende</strong>.</p>
+        <p>Hier entstehen bald Gedanken, Texte und Bilder zwischen Ankunft und Abfahrt.</p>
+        <!-- Hier kannst du später dynamisch Blogübersicht oder andere Inhalte einfügen -->
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-200 text-center py-6 text-sm text-gray-600">
+      © 2025 Henris Bahnsteigende – Alle Rechte vorbehalten
+    </footer>
+
+  </body>
+</html>

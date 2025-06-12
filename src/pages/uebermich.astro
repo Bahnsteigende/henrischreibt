@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const { slug } = Astro.params;
+// Pfad zu deiner Datei "uebermich.md"
+const uebermichFiles = import.meta.glob('../content/uebermich.md');
+
+let uebermichEntry;
+
+for (const [path, resolver] of Object.entries(uebermichFiles)) {
+  if (path.endsWith('uebermich.md')) {
+    uebermichEntry = await resolver();
+    break;
+  }
+}
+
+if (!uebermichEntry) {
+  throw new Error('Die Datei "uebermich.md" wurde nicht gefunden');
+}
+
+const { frontmatter, Content } = uebermichEntry as { frontmatter: any; Content: any };
+
+// Export z.B. Content und frontmatter oder was du brauchst
+export { frontmatter, Content };
+
+
+---
+<BaseLayout title={frontmatter.title}>
+  <article class="px-6 py-8 md:px-16 max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-2">{frontmatter.title}</h1>
+    <p class="text-sm text-gray-600 mb-6">Veröffentlicht am {frontmatter.date}</p>
+
+    {frontmatter.image &&
+      <a href={frontmatter.image} target="_blank" class="block w-full h-[250px] overflow-hidden mb-8">
+        <img src={frontmatter.image} alt={`Beitragsbild: ${frontmatter.title}`} class="w-full h-full object-cover object-center block" />
+      </a>
+    }
+
+    <section class="prose prose-sm sm:prose lg:prose-lg prose-img:rounded">
+      <Content />
+    </section>
+
+   
+  </article>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { slug } = Astro.params;
+const allPosts = import.meta.glob('../../content/blog/*.md');
+
+let postEntry;
+for (const [path, resolver] of Object.entries(allPosts)) {
+  if (path.includes(`${slug}.md`)) {
+    postEntry = await resolver();
+    break;
+  }
+}
+
+if (!postEntry) {
+  throw new Error(`Kein Blogpost gefunden für Slug: ${slug}`);
+}
+
+const { frontmatter, Content } = postEntry as { frontmatter: any; Content: any };
+
+export async function getStaticPaths() {
+  const postFiles = import.meta.glob('../../content/blog/*.md');
+  const paths = [];
+
+  for (const path in postFiles) {
+    const slug = (path.split('/').pop() ?? '').replace('.md', '');
+    paths.push({ params: { slug } });
+  }
+
+  return paths;
+}
+---
+
+<BaseLayout title={frontmatter.title}>
+  <article class="px-6 py-8 md:px-16 max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-2">{frontmatter.title}</h1>
+    <p class="text-sm text-gray-600 mb-6">Veröffentlicht am {frontmatter.date}</p>
+
+    {frontmatter.image &&
+      <a href={frontmatter.image} target="_blank" class="block w-full h-[250px] overflow-hidden mb-8">
+        <img src={frontmatter.image} alt={`Beitragsbild: ${frontmatter.title}`} class="w-full h-full object-cover object-center block" />
+      </a>
+    }
+
+    <section class="prose prose-sm sm:prose lg:prose-lg prose-img:rounded">
+      <Content />
+    </section>
+
+    <h3 class="mt-10"><a href="/blog" class="text-gray-800 underline hover:text-black">Zurück zur Blogübersicht</a></h3>
+  </article>
+</BaseLayout>
