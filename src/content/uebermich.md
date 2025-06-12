@@ -1,7 +1,7 @@
 ---
 title: "Über mich"
 date: 12.06.2025
-image: "../../../public/bilder/ich.jpg"
+image: "/bilder/ich.jpg"
 ---
 
 <span style="font-size:40px;">Ich bin Henri,</span>
