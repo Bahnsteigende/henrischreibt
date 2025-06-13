@@ -1,7 +1,7 @@
 ---
 title: "Bobo 7 Summit Ecopoint - Anfang"
-date: 15.02.2025
-image: "/public/bilder/blog-bilder/bobo1.jpg"
+date: 2025-02-15
+image: "/bilder/blog-bilder/bobo1.jpg"
 description: "Der Anfang einer Reise zu den höchsten Bergen der Alpenländer - Eine Dokumentation"
 ---
 

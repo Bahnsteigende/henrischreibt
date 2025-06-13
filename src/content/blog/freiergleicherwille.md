@@ -1,7 +1,7 @@
 ---
 title: "Freier gleicher Wille"
-date: 02.12.2024
-image: "/public/bilder/blog-bilder/freiergleicherwille.jpg"
+date: 2024-12-02
+image: "/bilder/blog-bilder/freiergleicherwille.jpg"
 description: "Jeden Dienstag gehe ich nach meinen Veranstaltungen in die Bibliothek des philosophischen Seminars. Jeden Dienstag…"
 ---
 

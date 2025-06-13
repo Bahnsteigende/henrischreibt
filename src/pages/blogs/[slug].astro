@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import DateDisplay from '../../components/DateDisplay.astro';
 
 const { slug } = Astro.params;
 const allPosts = import.meta.glob('../../content/blog/*.md');
@@ -34,7 +35,7 @@ export async function getStaticPaths() {
 <BaseLayout title={frontmatter.title}>
   <article class="px-6 py-8 md:px-16 max-w-3xl mx-auto">
     <h1 class="text-2xl font-bold mb-2">{frontmatter.title}</h1>
-    <p class="text-sm text-gray-600 mb-6">Veröffentlicht am {frontmatter.date}</p>
+    <p class="text-sm text-gray-600 mb-6">Veröffentlicht am <DateDisplay date={frontmatter.date}/></p>
 
     {frontmatter.image &&
       <a href={frontmatter.image} target="_blank" class="block w-full h-[250px] overflow-hidden mb-8">

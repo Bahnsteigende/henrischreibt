@@ -1,6 +1,6 @@
 ---
 title: "Das Bahnsteigende"
-date: 15.01.2025
+date: 2025-01-15
 image: "/bilder/blog-bilder/Bahnsteigende.jpg"
 description: "Es ist etwas magisches in der Zeit, in der ich eigentlich schon hätte aufbrechen müssen…"
 ---

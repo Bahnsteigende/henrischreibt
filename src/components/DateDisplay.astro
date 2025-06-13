@@ -1,0 +1,11 @@
+---
+// src/components/DateDisplay.astro
+const { date } = Astro.props;
+const formatted = new Date(date).toLocaleDateString('de-DE', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<time datetime={date} title={date}>{formatted}</time>

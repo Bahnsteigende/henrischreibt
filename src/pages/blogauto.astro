@@ -1,0 +1,82 @@
+---
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DateDisplay from '../components/DateDisplay.astro';
+
+const blogDir = path.resolve('./src/content/blog');
+
+// Alle Markdown-Dateien im Verzeichnis lesen
+const files = fs.readdirSync(blogDir).filter((file) => file.endsWith('.md'));
+
+// Frontmatter extrahieren
+type PostMeta = {
+  title: string;
+  date: string;
+  slug: string;
+  description: string;
+  image: string;
+};
+
+const posts: PostMeta[] = files
+  .map((filename) => {
+    const filePath = path.join(blogDir, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(fileContent);
+
+    return {
+      title: data.title,
+      date: data.date,
+      description: data.description,
+      image: data.image,
+      slug: filename.replace('.md', ''),
+    };
+  })
+  
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // ⬅ Sortierung nach Datum absteigend
+
+---
+
+
+<BaseLayout title="Blog">
+
+    <main class="px-6 py-10 max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Blog</h2>
+      <p class="mb-8">
+        Hier werden meine Blogs aufgeführt, der Neueste ganz oben. Thematisch ist es ein Durcheinander, wie Ideen nun mal so sind. Vielleicht werden in Zukunft ein paar Kategorien eingeführt, wenn ich beschließe die Texte in der ein oder anderen Weise aufeinander aufbauen zu lassen. Viel Spaß!
+      </p>
+
+  <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center;">
+    {posts.map(post => (
+      <li style="
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+      ">
+        <a href={`../blogs/${post.slug}`} style="flex-shrink: 0;">
+          <img 
+            src={post.image} 
+            alt={post.title} 
+            style="
+              width: 150px;
+              height: 150px;
+              object-fit: cover;
+              border-radius: 12px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            " 
+          />
+        </a>
+        <div>
+          <h2 style="margin: 0;"><a href={`../blogs/${post.slug}`}>{post.title}</a></h2>
+          <p style="margin: 0.5rem 0; color: #555;">{post.description}</p>
+          <small style="color: #888;"><DateDisplay date={post.date} /></small>
+        </div>
+      </li>
+    ))}
+  </ul>
+
+</BaseLayout>
