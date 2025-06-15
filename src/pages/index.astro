@@ -1,6 +1,7 @@
 ---
 import "/public/styles/global.css";
-
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -12,30 +13,7 @@ import "/public/styles/global.css";
   </head>
   <body class="bg-white text-black font-sans flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <header class="bg-gray-100 py-12 px-6 shadow-md">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Henris Bahnsteigende</h1>
-        <nav class="flex justify-center space-x-8 text-lg font-medium">
-          <a href="/blogauto" class="relative group">
-            <span class="pb-1">Blog</span>
-            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
-          </a>
-          <a href="/schreib-portfolio" class="relative group">
-            <span class="pb-1">Textsammlung</span>
-            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
-          </a>
-          <a href="/foto-portfolio" class="relative group">
-            <span class="pb-1">Fotosammlung</span>
-            <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
-          </a>
-                    <a href="/uebermich" class="relative group">
-          <span class="pb-1">Über mich</span>
-          <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all group-hover:w-full"></span>
-          </a>
-        </nav>
-      </div>
-    </header>
+    <Header />
 
     <!-- Main Content -->
     <main class="flex-grow px-6 py-12 max-w-3xl mx-auto">
@@ -46,10 +24,6 @@ import "/public/styles/global.css";
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 dark:bg-gray-200 text-center py-6 text-sm text-gray-600">
-      © 2025 Henris Bahnsteigende – Alle Rechte vorbehalten
-    </footer>
-
+    <Footer />
   </body>
 </html>

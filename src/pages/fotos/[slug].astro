@@ -1,0 +1,35 @@
+---
+import { photoSets } from '../../data/photos.js';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DateDisplay from '../../components/DateDisplay.astro';
+
+export async function getStaticPaths() {
+  return photoSets.map((photo) => ({
+    params: { slug: photo.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const photoSet = photoSets.find(p => p.slug === slug);
+
+if (!photoSet) {
+  throw new Error("Foto-Set nicht gefunden");
+}
+
+
+---
+
+
+
+<BaseLayout title={photoSet.title}>
+<h1>{photoSet.title}</h1>
+<p class="text-sm text-gray-500">{photoSet.description}</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+  {photoSet.images.map((src) => (
+    <img src={src} alt={photoSet.title} class="rounded shadow" loading="lazy" />
+  ))}
+</div>
+  </article>
+</BaseLayout>

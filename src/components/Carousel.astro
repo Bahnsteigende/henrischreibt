@@ -1,0 +1,143 @@
+---
+const { images, slug, carouselId } = Astro.props;
+const carouselElementId = `${slug}-carousel-${carouselId}`;
+
+
+---
+<style>
+  .carousel-container {
+    position: relative;
+    width: 110%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .carousel-image {
+    position: absolute;
+    top: 50%;
+    left: 38.5%;
+    width: 180px;
+    height: 160px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, z-index 0.5s, opacity 0.5s;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 9999px;
+    background: white;
+    cursor: pointer;
+    z-index: 50;
+    transition: background 0.3s;
+    user-select: none;
+  }
+
+  .carousel-prev:hover,
+  .carousel-next:hover {
+    background: #f3f3f3;
+  }
+
+  .carousel-prev {
+    left: 10px;
+  }
+
+  .carousel-next {
+    right: 10px;
+  }
+</style>
+
+<div class="carousel-container">
+  <button class="carousel-prev" type="button" aria-label="Previous">←</button>
+
+  <div
+    class="carousel-track"
+    id={carouselElementId}
+    data-carousel-id={carouselElementId}
+  >
+    {images.map((img: string, i: number) => (
+      <a href={`/fotos/${slug}`} target="_self">
+        <img
+          src={img}
+          class="carousel-image"
+          loading="lazy"
+          alt=""
+          data-index={i}
+        />
+      </a>
+    ))}
+  </div>
+
+  <button class="carousel-next" type="button" aria-label="Next">→</button>
+<p class="text-red-600 font-bold">Carousel geladen: {carouselElementId}</p>
+  <script type="module" is:inline>
+(() => {
+  const el = document.querySelector('[data-carousel-id]');
+  if (!el) {
+    console.warn("Carousel not found");
+    return;
+  }
+
+  const images = Array.from(el.querySelectorAll(".carousel-image"));
+  let index = 0;
+  const visible = 5;
+  const centerIndex = Math.floor(visible / 2);
+
+function update() {
+  const total = images.length;
+
+  images.forEach((img) => {
+    img.style.opacity = '0';
+    img.style.zIndex = '0';
+    img.style.pointerEvents = 'none';
+  });
+
+  for (let offset = -centerIndex; offset <= centerIndex; offset++) {
+    let imgIndex = (index + offset + total) % total;
+    const img = images[imgIndex];
+
+    const shift = offset * 120;
+    const scale = 1 - Math.abs(offset) * 0.15;
+    const z = 10 - Math.abs(offset);
+    const opacity = 1 - Math.abs(offset) * 0.2;
+
+    img.style.transform = `translateX(${shift}px) translateY(-50%) scale(${scale})`;
+    img.style.zIndex = z;
+    img.style.opacity = opacity;
+    img.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+  }
+}
+
+  el.step = (dir) => {
+    index = (index + dir * 0.5 + images.length) % images.length;
+    update();
+  };
+
+  update();
+
+  const container = el.parentElement;
+  const prevBtn = container.querySelector('.carousel-prev');
+  const nextBtn = container.querySelector('.carousel-next');
+
+  prevBtn?.addEventListener('click', () => el.step(-1));
+  nextBtn?.addEventListener('click', () => el.step(1));
+})();
+</script>
+</div>
