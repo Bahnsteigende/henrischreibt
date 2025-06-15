@@ -3,7 +3,7 @@ export const photoSets = [
     title: "Heidelberger Symposium",
     slug: "symposium",
     category: "events",
-    cover: "/bilder/portfolio/Symposium/Symp (5).jpg",
+    cover: "/bilder/portfolio/Symposium/Symp5.jpg",
     images: [
     "/bilder/portfolio/Symposium/Symp1.jpg",
     "/bilder/portfolio/Symposium/Symp2.jpg",
@@ -20,9 +20,9 @@ export const photoSets = [
   },
   {
     title: "Auswahl Bergsteigen",
-    slug: "auswahl-bergsteigen",
+    slug: "auswahlbergsteigen",
     category: "outdoor",
-    cover: "/bilder/portfolio/Bergsteigen/Bergsteigen (3).jpg",
+    cover: "/bilder/portfolio/Bergsteigen/Bergsteigen3.jpg",
     images: [
       "/bilder/portfolio/Bergsteigen/Bergsteigen1.jpg",
       "/bilder/portfolio/Bergsteigen/Bergsteigen2.jpg",

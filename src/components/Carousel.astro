@@ -1,9 +1,17 @@
 ---
 const { images, slug, carouselId } = Astro.props;
-const carouselElementId = `${slug}-carousel-${carouselId}`;
 
+console.log("Carousel props:", { slug, carouselId });
 
+// Nur sichere Zeichen verwenden (keine Punkte, Schrägstriche etc.)
+const safeSlug = (slug || 'default').toString().replace(/[^\w\-]/g, '');
+const safeId = (typeof carouselId === 'number' || typeof carouselId === 'string')
+  ? carouselId
+  : '0';
+
+const carouselElementId = `${safeSlug}-carousel-${safeId}`;
 ---
+
 <style>
   .carousel-container {
     position: relative;
@@ -73,7 +81,7 @@ const carouselElementId = `${slug}-carousel-${carouselId}`;
     data-carousel-id={carouselElementId}
   >
     {images.map((img: string, i: number) => (
-      <a href={`/fotos/${slug}`} target="_self">
+        <a href={`/fotos/${slug}`} target="_self">
         <img
           src={img}
           class="carousel-image"

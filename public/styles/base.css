@@ -1,0 +1,19 @@
+/* src/styles/base.css */
+body {
+  font-family: sans-serif;
+  color: #111;
+  background: #fff;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}

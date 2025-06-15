@@ -35,7 +35,7 @@ const filteredSets =
 
 
     <!-- Kategorien -->
- <!-- Kommentar   <nav class="flex flex-wrap gap-3 mb-10">
+ <!--  <nav class="flex flex-wrap gap-3 mb-10">
       <a
         href="/fotos"
         class="px-4 py-1.5 rounded-full border text-sm font-medium transition
@@ -53,11 +53,11 @@ const filteredSets =
         </a>
       ))}
     </nav>
- -->
+-->
     <!-- Sets -->
 <>
   {filteredSets.map((set, idx) => (
-    <Carousel client:visible images={set.images} slug={set.slug} carouselId={idx} />
+    <Carousel images={set.images} slug={set.slug} carouselId={idx} />
   ))}
 </> 
     </main>
