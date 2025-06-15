@@ -86,58 +86,56 @@ const carouselElementId = `${slug}-carousel-${carouselId}`;
   </div>
 
   <button class="carousel-next" type="button" aria-label="Next">→</button>
-<p class="text-red-600 font-bold">Carousel geladen: {carouselElementId}</p>
-  <script type="module" is:inline>
+
+<script type="module" is:inline>
 (() => {
-  const el = document.querySelector('[data-carousel-id]');
-  if (!el) {
-    console.warn("Carousel not found");
-    return;
-  }
+  const carousels = document.querySelectorAll('[data-carousel-id]');
 
-  const images = Array.from(el.querySelectorAll(".carousel-image"));
-  let index = 0;
-  const visible = 5;
-  const centerIndex = Math.floor(visible / 2);
+  carousels.forEach((el) => {
+    const images = Array.from(el.querySelectorAll(".carousel-image"));
+    let index = 0;
+    const visible = 5;
+    const centerIndex = Math.floor(visible / 2);
 
-function update() {
-  const total = images.length;
+    function update() {
+      const total = images.length;
 
-  images.forEach((img) => {
-    img.style.opacity = '0';
-    img.style.zIndex = '0';
-    img.style.pointerEvents = 'none';
-  });
+      images.forEach((img) => {
+        img.style.opacity = '0';
+        img.style.zIndex = '0';
+        img.style.pointerEvents = 'none';
+      });
 
-  for (let offset = -centerIndex; offset <= centerIndex; offset++) {
-    let imgIndex = (index + offset + total) % total;
-    const img = images[imgIndex];
+      for (let offset = -centerIndex; offset <= centerIndex; offset++) {
+        let imgIndex = (index + offset + total) % total;
+        const img = images[imgIndex];
 
-    const shift = offset * 120;
-    const scale = 1 - Math.abs(offset) * 0.15;
-    const z = 10 - Math.abs(offset);
-    const opacity = 1 - Math.abs(offset) * 0.2;
+        const shift = offset * 120;
+        const scale = 1 - Math.abs(offset) * 0.15;
+        const z = 10 - Math.abs(offset);
+        const opacity = 1 - Math.abs(offset) * 0.2;
 
-    img.style.transform = `translateX(${shift}px) translateY(-50%) scale(${scale})`;
-    img.style.zIndex = z;
-    img.style.opacity = opacity;
-    img.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
-  }
-}
+        img.style.transform = `translateX(${shift}px) translateY(-50%) scale(${scale})`;
+        img.style.zIndex = z;
+        img.style.opacity = opacity;
+        img.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+      }
+    }
 
-  el.step = (dir) => {
-    index = (index + dir * 0.5 + images.length) % images.length;
+    el.step = (dir) => {
+      index = (index + dir * 0.5 + images.length) % images.length;
+      update();
+    };
+
     update();
-  };
 
-  update();
+    const container = el.parentElement;
+    const prevBtn = container.querySelector('.carousel-prev');
+    const nextBtn = container.querySelector('.carousel-next');
 
-  const container = el.parentElement;
-  const prevBtn = container.querySelector('.carousel-prev');
-  const nextBtn = container.querySelector('.carousel-next');
-
-  prevBtn?.addEventListener('click', () => el.step(-1));
-  nextBtn?.addEventListener('click', () => el.step(1));
+    prevBtn?.addEventListener('click', () => el.step(-1));
+    nextBtn?.addEventListener('click', () => el.step(1));
+  });
 })();
 </script>
 </div>
