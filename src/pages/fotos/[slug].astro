@@ -10,26 +10,32 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-
-const photoSet = photoSets.find(p => p.slug === slug);
+const photoSet = photoSets.find((p) => p.slug === slug);
 
 if (!photoSet) {
   throw new Error("Foto-Set nicht gefunden");
 }
-
-
 ---
 
-
-
 <BaseLayout title={photoSet.title}>
-<h1>{photoSet.title}</h1>
-<p class="text-sm text-gray-500">{photoSet.description}</p>
+  <article class="max-w-6xl mx-auto px-4 py-8">
+    <header class="mb-6">
+      <h1 class="text-3xl font-semibold text-gray-900 mb-2">{photoSet.title}</h1>
+      <p class="text-base text-gray-600">{photoSet.description}</p>
+    </header>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-  {photoSet.images.map((src) => (
-    <img src={src} alt={photoSet.title} class="rounded shadow" loading="lazy" />
-  ))}
-</div>
+    <!-- 🖼️ Masonry-Galerie mit Bild-Links -->
+    <section class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+      {photoSet.images.map((src, index) => (
+        <a href={src} target="_blank" rel="noopener noreferrer">
+          <img
+            src={src}
+            alt={`${photoSet.title} – Bild ${index + 1}`}
+            class="w-full mb-4 rounded-lg shadow-md break-inside-avoid transition-transform hover:scale-105"
+            loading="lazy"
+          />
+        </a>
+      ))}
+    </section>
   </article>
 </BaseLayout>

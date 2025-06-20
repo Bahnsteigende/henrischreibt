@@ -12,8 +12,7 @@ export const photoSets = [
     "/bilder/portfolio/Symposium/Symp5.jpg",
     "/bilder/portfolio/Symposium/Symp6.jpg",
     "/bilder/portfolio/Symposium/Symp7.jpg",
-    "/bilder/portfolio/Symposium/Symp8.jpg",
-    "/bilder/portfolio/Symposium/Symp9.jpg"    
+    "/bilder/portfolio/Symposium/Symp8.jpg"   
     ],
     description: "Das xx. Heidelberger Symposium an dessen Planung ich als Teil des Orga-Teams mitgewirkt habe.",
     date: "2025-05-22"

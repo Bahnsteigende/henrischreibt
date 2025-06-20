@@ -1,29 +1,51 @@
+
+
 ---
-import "/public/styles/global.css";
-import Header from '../components/header.astro';
-import Footer from '../components/footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Henris Bahnsteigende</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/styles/global.css" rel="stylesheet" />
-  </head>
-  <body class="bg-white text-black font-sans flex flex-col min-h-screen">
 
-    <Header />
+<BaseLayout title="Henris Bahnsteigende">
+  <main class="max-w-6xl mx-auto px-4 py-10 space-y-6">
 
-    <!-- Main Content -->
-    <main class="flex-grow px-6 py-12 max-w-3xl mx-auto">
-      <section class="space-y-4 text-center">
-        <p class="text-xl">Willkommen an <strong>Henris Bahnsteigende</strong>.</p>
-        <p>Zwischen Ankunft und Abfahrt.</p>
-        <!-- Hier kannst du später dynamisch Blogübersicht oder andere Inhalte einfügen -->
-      </section>
-    </main>
+    <!-- Bereich: Blog -->
+    <a href="/blogauto" class="group block relative rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition">
+      <img src="/bilder/kategorien/blog.jpg" alt="Blog" class="w-full h-60 object-cover group-hover:scale-105 transition-transform rounded-2xl" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-black/70 text-white px-5 py-2 rounded-full text-base font-semibold shadow hover:bg-black/90 transition">
+          Zum Blog
+        </div>
+      </div>
+    </a>
 
-    <Footer />
-  </body>
-</html>
+    <!-- Bereich: Texte -->
+    <a href="/schreib-portfolio.html" class="group block relative rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition">
+      <img src="/bilder/kategorien/texte.jpg" alt="Texte" class="w-full h-60 object-cover group-hover:scale-105 transition-transform rounded-2xl" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-black/70 text-white px-5 py-2 rounded-full text-base font-semibold shadow hover:bg-black/90 transition">
+          Sammlung Texte
+        </div>
+      </div>
+    </a>
+
+    <!-- Bereich: Fotografie -->
+    <a href="/fotos" class="group block relative rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition">
+      <img src="/bilder/kategorien/fotos.jpg" alt="Fotografie" class="w-full h-60 object-cover group-hover:scale-105 transition-transform rounded-2xl" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-black/70 text-white px-5 py-2 rounded-full text-base font-semibold shadow hover:bg-black/90 transition">
+          Sammlung Fotografie
+        </div>
+      </div>
+    </a>
+
+    <!-- Bereich: Über mich -->
+    <a href="/uebermich.html" class="group block relative rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition">
+      <img src="/bilder/kategorien/uebermich.jpg" alt="Über mich" class="w-full h-60 object-cover group-hover:scale-105 transition-transform rounded-2xl" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div class="bg-black/70 text-white px-5 py-2 rounded-full text-base font-semibold shadow hover:bg-black/90 transition">
+          Über mich
+        </div>
+      </div>
+    </a>
+
+  </main>
+</BaseLayout>
