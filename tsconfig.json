@@ -1,15 +1,18 @@
+// tsconfig.json
 {
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Node",
     "jsx": "preserve",
+    "esModuleInterop": true,
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"]
-    }
+      "~/*": ["src/*"]
+    },
+    "types": ["astro/client"]
   },
-  "include": ["src", "public"],
+  "include": ["src", "astro.config.*", "env.d.ts"],
   "exclude": ["node_modules"]
 }
