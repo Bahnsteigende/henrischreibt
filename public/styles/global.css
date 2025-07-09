@@ -7,3 +7,7 @@ a {
 a:hover {
   color: #005fa3;
 }
+
+p {
+  margin-bottom: 0.5rem; /* statt nur 1rem oder was Astro standardmäßig nutzt */
+}
