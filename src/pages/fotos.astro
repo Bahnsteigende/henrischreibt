@@ -1,69 +1,40 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 import "/public/styles/global.css";
-import { photoSets } from '../data/photos.js';
-import Header from '../components/header.astro';
-import Footer from '../components/footer.astro';
-import DateDisplay from '../components/DateDisplay.astro';
-import Carousel from '../components/Carousel.astro';
+import BaseLayoutDark from '../layouts/BaseLayoutDark.astro';
 
-const url = new URL(Astro.request.url);
-const currentCategory = url.searchParams.get("cat") || "all";
-
-const categories = [...new Set(photoSets.map(p => p.category))];
-
-const filteredSets =
-  currentCategory === "all"
-    ? photoSets
-    : photoSets.filter((p) => p.category === currentCategory);
-
+// Bilder aus /public/bilder/Portfolio einlesen
+const imagesDir = './public/bilder/portfolio';
+const imageFiles = fs.readdirSync(imagesDir).filter(file =>
+  ['.jpg', '.jpeg', '.png', '.webp'].includes(path.extname(file).toLowerCase())
+);
+const imagePaths = imageFiles.map(file => `/bilder/portfolio/${file}`);
 ---
-<!DOCTYPE html>
+
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Fotos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-white text-black font-sans leading-relaxed">
 
-   <Header />
-
-    <!-- Main -->
-    <main class="px-6 py-10 max-w-3xl mx-auto">
-        <h2 class="text-2xl font-bold mb-4">Foto-Sammlung</h2>
-
-
-    <!-- Kategorien -->
- <!--  <nav class="flex flex-wrap gap-3 mb-10">
-      <a
-        href="/fotos"
-        class="px-4 py-1.5 rounded-full border text-sm font-medium transition
-          {currentCategory === 'all' ? 'bg-black text-white' : 'hover:bg-gray-200'}"
-      >
-        Alle
-      </a>
-      {categories.map((cat) => (
-        <a
-          href={`/fotos?cat=${cat}`}
-          class={`px-4 py-1.5 rounded-full border text-sm font-medium capitalize transition
-            ${currentCategory === cat ? 'bg-black text-white' : 'hover:bg-gray-200'}`}
-        >
-          {cat.replace('-', ' ')}
-        </a>
-      ))}
-    </nav>
--->
-    <!-- Sets -->
-<>
-  {filteredSets.map((set, idx) => (
-    <Carousel images={set.images} slug={set.slug} carouselId={idx} />
+<BaseLayoutDark>
+    <main class="max-w-6xl mx-auto px-4 py-8 ">
+<div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+  {imagePaths.map(path => (
+    <a
+      href={path}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="break-inside-avoid mb-3 block"
+    >
+      <img
+        src={path}
+        alt="Portfolio Bild"
+        loading="lazy"
+        class="w-full h-auto shadow-lg transition-transform hover:scale-[1.02]"
+      />
+    </a>
   ))}
-</> 
-    </main>
-
-    <Footer />
-
-  </body>
+</div>
+</main>
+</BaseLayoutDark>
+    
 </html>
-
