@@ -11,7 +11,12 @@ Ich melde mich kurz vor der mittlerweile 4. (und 5.,das Tippen dauert ewig) Nach
 Es braucht ungewöhnlich lange diese Sätze zu schreiben, und das liegt an dem Anfang des Zweiten Tages der Anfahrt; an einem wirklich schönen und anstrengenden ersten Tag trafen sich Nino und ich morgens nach längeren Zugfahrten in Martigny, und schafften es mit beeindruckend schweren Fahrrädern noch ca 1500hm bis nahe an die Spitze des St. Bernard Pass, auf dem wir dann noch die mit dem Auto angereisten Philipp und Ulla trafen, und wunderbar Zelten konnten. 
 Am nächsten Tag aber, den wir mit dem Rest des Passes beginnen wollten, hab ich beim Anfahren mein Gleichgewicht verloren, wollte mit meinen Füßen austarieren, hatte aber Klickies an, das heißt meine Füße konnten sich nicht lösen. Aus Reflex habe ich dann meine Hände hochgerissen und das gesamte Gewicht mit meinem Daumen aufgefangen… 
 
-Bild Daumen
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250802_150448.jpg" alt="Map Overall" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  </figcaption>
+</figure>
+
 
 Ich schreibe jetzt schon relativ spät, ich hätte der Transparenz wegen auch am Tiefpunkt was schreiben sollen, die ganze Aktion stand an dem Punkt nämlich für mich auf dem Spiel. Ulla hat mich dann in die Notaufnahme in Aosta gebracht und nach ein bis zwei Stunden sehr freundlicher Behandlung wurde ich dann mit einer Schiene am Daumen nach Hause geschickt, die ich sieben Tage tragen sollte. Mittlerweile sind vier Tage vergangen und es ist schon ein gutes Stück besser geworden, und die Möglichkeit eines frühen Endes für mich ist erstmal von der Bildfläche, aber es war intensiv. Die Schiene macht leider auch die Handynutzung mit dem Daumen unmöglich, was mich hier so kurz angebunden und auch schon auf mehrere Abende aufgeteilt schreiben lässt… 
 
