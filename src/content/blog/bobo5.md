@@ -32,4 +32,4 @@ Die Steilflanke zog sich noch über 100hm, mit den steilsten Stellen erst kurz v
 
 Der Rückweg ging dann doch ganz gut, wir hatten genug Zeit, haben ein paar Stellen mit in den Schnee gesteckten Eispickeln gesichert und die Schlüsselstelle abgeseilt. 
 
-Mein Daumen und der Mont Blanc haben beide sehr fleißig versucht das Projekt in seinem Erfolg zu gefährden aber noch laufen und fahren und klettern wir. Genug Pathos für die nächsten 3 Wochen. 2/7 
+Mein Daumen und der Mont Blanc haben beide sehr fleißig versucht das Projekt in seinem Erfolg zu gefährden aber noch laufen und fahren und klettern wir. Genug Pathos für die nächsten 3 Wochen. 2/7 . 
