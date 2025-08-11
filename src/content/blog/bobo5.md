@@ -29,7 +29,7 @@ Da bin ich wieder, wir machen einen Zeitsprung. Ich liege knapp vor Zermatt in m
   <img src="/bilder/blogs/2025_0808_02565900.jpg" alt="tacul" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
   <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Blick von der Cosmique Hütte auf den Tacul, den ersten Teil der Tour. 
   </figcaption>
-</figure
+</figure>
 
 Über einige Spalten und durch Gletscherbrüche hindurch erreichten wir nach ungefähr 3 1/2 Stunden als Erste an diesem Tag die ausgerschriebene Schlüsselstelle der Tour. Eine Eis-Passage, die direkt in einen aperen (man kann sagen ein Zwischending zwischen Glatteis und Schnee) Steilhang führte, auf dem, wie es sich herausstellte, der Weg angepasst werden musste und lange Zeit bei 50°-55° Hangneigung verlief. Hier wurde alles ein bisschen chaotischer; Nino und Philipp, die zusammen in einer 2er Seilschaft vorausgingen, waren schon über die besagte Schlüsselstelle hinweg, und fanden sich jetzt in diesem steiler als erwarteten Steilhang wieder, als Ole, der mit mir und Niklas in einer 3er Seilschaft hing, knapp nach der Schlüsselstelle und mit guter Sicht auf das kommende Terrain entschied erstmal nicht weiterzugehen. Und Oles Bedenken waren von ganz fundamentaler Richtigkeit. Eine Sicherung zu legen ist bei dem Boden super schwierig, Eisschrauben halten nicht, es ist kein Fels da, um den du etwas legen kannst, kein Schnee in den du verlässlich etwas stecken kannst, und zeitgleich rieselt noch das Eis von den beiden schon über uns auf Ole hinab. Als Ole wieder unten war und mit Niklas entgültig entschlossen war von hier nicht weiter hoch zu gehen, stand ich vor einem Dilemma; ich fühlte mich noch wohl, die Steilheit war beängstigend, aber ich hatte Bock weiterzugehen. Das Problem war, dass meine Leute hinter der Stelle, nicht in Sichtweite die Flucht nach vorne ergriffen hatten, und ich nicht wirklich Zeit verlieren durfte um sie noch einzuholen. Ich entschied mich, mich kurzerhand aus meiner Seilschaft auszuklinken, und das Eis solo hoch zu pickeln, um die beiden einzuholen. 
 
@@ -39,7 +39,7 @@ Da bin ich wieder, wir machen einen Zeitsprung. Ich liege knapp vor Zermatt in m
   <img src="/bilder/blogs/2025_0808_14475200.jpg" alt="gleztscherbruch" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
   <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Ein Versuch mal einen Gletscherbruch am Tacul zu fotografieren, durch die wir noch in der Nacht durchgelaufen sind. 
   </figcaption>
-</figure
+</figure>
 
 Hier sei gesagt, dass diese Situation im Nachhinein viel mit mir gemacht hat. Bergsteigen, und insbesondere solcbe idealistischen Projekte sind ein schrecklich schöner Fanatismus, und es ist viel emotionale Arbeit nötig, das zu reflektieren und in den richtigen Momenten auf die richtigen Dinge Wert zu setzen. Ich habe keine  wirklichen Fehler gemacht, ich wusst dort schon was ich tue, ich habe damit niemanden außer mich in Gefahr gebracht, aber ich weiß auch das Ole anders reagieet hätte, wären die Rollen vertauscht gewesen. Es war kein emphatischer Akt, es war purer Egoismus, und um es viel zu dramatisch zu sagen, fehlte sogar der Respekt vor mir selber in dieser Entscheidung. Trotzdem bin ich froh weitergegangen zu sein. 
 
@@ -50,7 +50,7 @@ Die Steilflanke zog sich noch über 100hm, mit den steilsten Stellen erst kurz v
   <img src="/bilder/blogs/IMG_20250808_073035.jpg" alt="selfie Monte" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
   <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Selfie on top
   </figcaption>
-</figure
+</figure>
 
 Der Rückweg ging dann doch ganz gut, wir hatten genug Zeit, haben ein paar Stellen mit in den Schnee gesteckten Eispickeln gesichert und die Schlüsselstelle abgeseilt. 
 
