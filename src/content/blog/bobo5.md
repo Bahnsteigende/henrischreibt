@@ -1,7 +1,7 @@
 ---
 title: "Bobo 7 Summit Ecopoint - Mont Blanc"
 date: 2025-08-11
-image: "/bilder/blogs/IMG_20250804_094730.jpg"
+image: "/bilder/blogs/2025_0808_18375000.jpg"
 description: "Der Mont Blanc - Eine Dokumentation"
 ---
 
