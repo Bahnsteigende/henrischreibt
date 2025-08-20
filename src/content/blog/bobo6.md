@@ -13,8 +13,8 @@ Die Fahrradetappen aus dem Mont-Blanc-Valley hinaus bis nach Zermatt hinein ware
 Wir sprechen gerne von "Flow", einem Stadium, in dem die Aktivität einfach dahin fließt, und das gegenteilige Extrem haben alle von uns unabhängig voneinander fühlen können, wie sich irgendwann herausstellt. Ole, der solche Schwingungen tendenziell früher erkennt und stärker darauf reagiert, kam schon gar nicht erst mit auf die Tour. Er sagte, er frage sich ständig, warum er jetzt hier aufgestiegen sei, und fände partout keine Antwort darauf.  
 
 <figure style="margin: 2rem 0; text-align: center;">
-  <img src="/bilder/blogs/IMG_20250813_055527.jpg" alt="tacul" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
-  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Blick von der Cosmique-Hütte auf den Tacul, den ersten Teil der Tour. 
+  <img src="/bilder/blogs/IMG_20250813_055527.jpg" alt="gletscher Monte rosa" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Aufstieg über Gletscher
   </figcaption>
 </figure>
 
