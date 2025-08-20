@@ -25,6 +25,12 @@ Nach etwa 1200 langen und mühsamen Höhenmetern erreichen wir den Gipfelgrat. S
 
 Am Gipfel weicht dann kurz unsere heutige Verhaltenheit, obwohl wir alle das Gefühl haben, dass unser Zustand der Tour nicht ganz gerecht wird. Auch werden wir schnell daran erinnert, warum wir uns so gehetzt haben, weil sich von hinten immer mehr Menschen auf den Gipfelgrat drängen und Platz sowie Ruhe weniger werden.  
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250813_074302.jpg" alt="Gipfel Monterosa" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Ich am Gipfel
+  </figcaption>
+</figure>
+
 Der Abstieg beginnt mit einer Abseilpiste, das heißt mehrere Stangen, bei denen man sich von einer zur anderen abseilen kann, um zu vermeiden, den Gipfelgrat in die andere Richtung zurückgehen zu müssen, was zu gefährlichen Stand-offs führen kann. Die Abseilerei verlief eigentlich gut, auch wenn es bei so einem populären Berg mit so vielen Menschen immer hektisch ist.  
 
 Abseilen ist tückisch: Es ist nicht kompliziert, aber der Einsatz ist so hoch, und deshalb führen kleinste Fehler schon zu sehr brenzligen Situationen. Wenn Kletterer an technischen Fehlern sterben, dann hat es meistens mit Abseilen zu tun.  
