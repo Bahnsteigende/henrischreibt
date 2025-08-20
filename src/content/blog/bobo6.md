@@ -43,6 +43,12 @@ Als das geschafft war, trennte uns nur noch ein wenig Gletscher-Gelatsche von de
 
 Wer nach dem letzten Blogeintrag nicht des Pathos’ satt ist, wer meint, er könne sich nichts Besseres vorstellen, als noch mehr klumpiges, schweres und nicht wenig unangenehmes Bergpalaber anzuhören, dem sei der Instagram-Kanal von Reinhold Messner zu empfehlen. Insbesondere die epischen und ein bisschen peinlichen Schwarz-Weiß-High-Contrast-Bilder haben ganz vorzügliche Beschreibungen. Und wenn es da nur wieder darum geht, dass in den "Furchen (Messners Gesichts) mehr Wahrheit liegt als in jedem Gipfelkreuz", oder irgendeine Umschreibung der Selbstfindung in den Bergen – auf der Tour zur Dufourspitze musste ich anderes suchen, bevor ich bei mir anfangen konnte.  
 
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250815_114744.jpg" alt="furka los" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Wir fahren auf einen Pass der im folgenden weggehauen wurde. 
+  </figcaption>
+</figure>
+
 Ich hänge mit meinen Blogs hinterher, weil die Wetterfenster so tight waren und wir auf Kosten unserer Tage in unserer Zeitplanung alles ein bisschen früher schieben mussten. Die letzten Tage waren nur stundenlang Fahrrad fahren, auf Berge stratzen und in allen Pausen, die man hat, essen und Zelt auf- und wieder abbauen. Ich hoffe, dass ich in nächster Zeit ein bisschen mehr Zeit habe, wieder auf aktuellen Stand zu kommen.  
 
 Ich hab große Freude, hier immer ein paar Sätze zu schreiben, auch wenn ich den größten Teil vergesse. Nächstes Mal dann zur Grauspitz und Zugspitze, zwei gegensätzlichen Welten.
