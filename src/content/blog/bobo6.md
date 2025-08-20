@@ -10,7 +10,13 @@ Hallo ihr!
 
 Die Fahrradetappen aus dem Mont-Blanc-Valley hinaus bis nach Zermatt hinein waren zwar wieder willkommene Abwechslung, aber bei 37 °C die Pässe mit den vollgepackten Fahrrädern zu fahren, grenzt dann doch schnell an Tortur. Nicht, dass wir uns nicht auch auf diese primitive Form der körperlichen Herausforderung gefreut haben, aber nach mittlerweile 13–15 Tagen pausenloser Hochbelastung sind es nicht unbedingt die Körper, die sich melden, sondern das Gemüt. Als wir heute Morgen (02:30) von der Monte-Rosa-Hütte zur Dufourspitze aufgebrochen sind, hatte einfach keiner von uns Bock.  
 
-Wir sprechen gerne von "Flow", einem Stadium, in dem die Aktivität einfach dahin fließt, und das gegenteilige Extrem haben alle von uns unabhängig voneinander fühlen können, wie sich irgendwann herausstellt. Ole, der solche Schwingungen tendenziell früher erkennt und stärker darauf reagiert, kam schon gar nicht erst mit auf die Tour. Er sagte, er frage sich ständig, warum er jetzt hier aufgestiegen sei, und fände partout keine Antwort darauf.  IMG_20250813_055527.jpg
+Wir sprechen gerne von "Flow", einem Stadium, in dem die Aktivität einfach dahin fließt, und das gegenteilige Extrem haben alle von uns unabhängig voneinander fühlen können, wie sich irgendwann herausstellt. Ole, der solche Schwingungen tendenziell früher erkennt und stärker darauf reagiert, kam schon gar nicht erst mit auf die Tour. Er sagte, er frage sich ständig, warum er jetzt hier aufgestiegen sei, und fände partout keine Antwort darauf.  
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250813_055527.jpg" alt="tacul" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Blick von der Cosmique-Hütte auf den Tacul, den ersten Teil der Tour. 
+  </figcaption>
+</figure>
 
 Anfangs ging es heute Morgen stumpf Höhenmeter hinauf. Wenn ich keinen Bock auf eine Tour habe, fange ich an zu hetzen. Hier führt Faulheit zu immenser Anstrengung, eine tückischere Faulheit: die Faulheit, Zeit mit etwas zu verbringen.  
 Auch geht man mit einigen anderen Seilschaften im Schlepptau die Tour los und hat ständig im Hinterkopf, bloß nicht hinter diese zu fallen, um dann an den etwas technischeren Stellen ewig anstehen zu müssen.  
