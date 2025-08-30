@@ -1,7 +1,7 @@
 ---
 title: "Die zwei Spitzen - Green Seven Blog 7"
 date: 2025-08-20
-image: "/bilder/blogs/IMG_20250812_203012.jpg"
+image: "/bilder/blogs/IMG_20250817_190631.jpg"
 description: "Von zwei ganz verschiedeneen Spitzen - Projekt Green Seven"
 tags: [Berge, Fahrrad, Liechtenstein, Zugspitze, Blogserie]
 ---
@@ -13,7 +13,12 @@ Der Weg ging über einige Pässe, darunter der malerische und anstrengende Furka
 
 Die Boulderhalle zuvor war ein Glücksgriff; nicht nur haben wir alte Heidelberger Boulderer getroffen, die uns in der Werkstatt der Halle einen Platz für unser Gepäck organisierten, sondern auch nette Liechtensteiner, die eine Alm bei unserem Ausgangspunkt kannten und telefonisch abklärten, dass wir uns mit dem Zelt auf deren Wiese stellen dürfen. Liechtenstein ein Lichtblick – in Liechtenstein sind wir noch Städter, unseren städtischen Kategorien des „höchsten“ Gipfels. Der Weg zum höchsten Berg, der Vorder Grauspitz, ist zu großen Teilen weder markiert noch befestigt. Man kann sagen: ein erfrischendes Desinteresse an der Kategorie, die wir so hochhalten.  
 
-*Bild Tal*  
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250817_190631.jpg" alt="Alm" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Unser Zeltplatz im Tal der Grauspitz, direkt an der freundlichen Alm 
+  </figcaption>
+</figure>
 
 Wir haben endlich Gastfreundschaft erlebt, und das wo die Berge noch sind wie sie sein sollten: ohne Platz für pathetische, herausfordernde Emotionen, stattdessen als Rahmen der Welt. Sie umgeben mich, scheinbar unüberwindbar, und machen meinen Horizont einsichtig. Sie konzentrieren die gesamte Welt in ihre Täler, und ich will gar nicht darüber hinweg, aus der Geborgenheit heraus – man genießt Übersichtlichkeit.  
 
