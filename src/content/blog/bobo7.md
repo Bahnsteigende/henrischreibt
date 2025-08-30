@@ -1,4 +1,3 @@
-
 ---
 title: "Die zwei Spitzen - Green Seven Blog 7"
 date: 2025-08-20
