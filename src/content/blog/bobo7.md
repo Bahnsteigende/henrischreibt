@@ -41,4 +41,13 @@ Die zwei Berge in diesem Blog haben uns zwei ganz gegensätzliche Welten gezeigt
 
 Noch zwei Berge, ein Blog kommt noch. Ich freue mich, bald wieder vom Alltag zu schreiben – ich vermisse Alltag und ich vermisse die Ideen und Gedanken, die ich dabei habe. Natürlich ist der Wechsel das Besondere, aber ich habe glaube ich in den letzten 3–4 Wochen geschafft, diesen einen Schritt zu gehen. Sätze darüber klingen so schnell recycelt, aber trotzdem: Man gibt dem Alltag wieder einen anderen Wert, es ist eine Re-Kalibrierung, die mir das Wertschätzen des Lebens für eine gewisse Zeit deutlich vereinfacht.  
 
+
+<figure style="margin: 2rem 0; text-align: center;">
+  <img src="/bilder/blogs/IMG_20250819_125141.jpg" alt="Alm" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Irgendwo zwischen Grau-uund Zugspitz
+  </figcaption>
+</figure>
+
+
+
 *5/7*
