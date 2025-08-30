@@ -2,6 +2,8 @@
 ---
 title: "Die zwei Spitzen - Green Seven Blog 7"
 date: 2025-08-20
+image: "/bilder/blogs/IMG_20250812_203012.jpg"
+description: "Von zwei ganz verschiedeneen Spitzen - Projekt Green Seven"
 tags: [Berge, Fahrrad, Liechtenstein, Zugspitze, Blogserie]
 ---
 
