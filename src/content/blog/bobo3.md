@@ -1,8 +1,8 @@
 ---
-title: "Bobo 7 Summit Ecopoint - Letzte Vorbereitungen"
+title: "Bobo 7 Summit Ecopoint 3 - Letzte Vorbereitungen"
 date: 2025-07-25
 image: "/bilder/blog-bilder/bobo3.jpg"
-description: "Gran Paradiso und die letzten Vorbereitungen - Eine Dokumentation"
+description: "Gran Paradiso und die letzten Vorbereitungen"
 ---
 
 Hallo FreundInnen,

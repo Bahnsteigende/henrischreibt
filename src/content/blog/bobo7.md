@@ -1,8 +1,8 @@
 ---
-title: "Die zwei Spitzen - Green Seven Blog 7"
+title: "Bobo 7 Summit Ecopoint 7 - Die zwei Spitzen"
 date: 2025-08-20
 image: "/bilder/blogs/IMG_20250817_190631.jpg"
-description: "Von zwei ganz verschiedeneen Spitzen - Projekt Green Seven"
+description: "Von zwei ganz verschiedenen Spitzen in der Mitte des Projektes."
 tags: [Berge, Fahrrad, Liechtenstein, Zugspitze, Blogserie]
 ---
 
@@ -44,7 +44,7 @@ Noch zwei Berge, ein Blog kommt noch. Ich freue mich, bald wieder vom Alltag zu 
 
 <figure style="margin: 2rem 0; text-align: center;">
   <img src="/bilder/blogs/IMG_20250819_125141.jpg" alt="Alm" style="display: block; margin: 0 auto; max-width: 70%; height: auto;" />
-  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Irgendwo zwischen Grau-uund Zugspitz
+  <figcaption style="font-size: 0.9rem; color: #666; font-style: italic; margin-top: 0.5rem;">Irgendwo zwischen Grau- und Zugspitz
   </figcaption>
 </figure>
 

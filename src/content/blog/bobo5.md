@@ -1,8 +1,8 @@
 ---
-title: "Bobo 7 Summit Ecopoint - Mont Blanc"
+title: "Bobo 7 Summit Ecopoint 5 - Mont Blanc"
 date: 2025-08-11
 image: "/bilder/blogs/2025_0808_18375000.jpg"
-description: "Der Mont Blanc – Eine Dokumentation"
+description: "Ein projektprägendes Vorhaben, der Mont Blanc"
 ---
 
 Der Mont Blanc. Wo fange ich an? Es ist fast absurd, wie sehr uns der höchste Berg des Projekts beschäftigt hat – immer im Hinterkopf, dass das Projekt durch ihn eine deutlichere Kontur bekommt, aber auch immer auf ihm auf der Kippe steht. Und jetzt, um halb fünf nachmittags, siebeneinhalb Stunden bevor wir frühstücken, um den Aufstieg zu probieren, kann ich auch sagen, dass wir eine Menge Glück hatten. Jetzt müssen wir nur noch etwas daraus machen.  
