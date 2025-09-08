@@ -3,6 +3,7 @@ title: "Bobo 7 Summit Ecopoint 2 - Vorbereitungen "
 date: 2025-07-09
 image: "/bilder/blog-bilder/bobo2.jpg"
 description: "Vorbereitungen für das Projekt und ein paar Schwenks aus dem Leben"
+collection: "Green seven"
 ---
 Dies ist der 2. Beitrag in einer Reihe die mein Projekt dokumentiert, im August '25 die höchsten Berge der Alpenländer zu besteigen, und von Einem zum Anderen mit dem Fahrrad zu cruisen. [Hier](../bobo1) geht es zum vorigen Post. 
 

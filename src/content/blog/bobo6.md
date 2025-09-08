@@ -3,6 +3,7 @@ title: "Bobo 7 Summit Ecopoint 6 – im Tief"
 date: 2025-08-13
 image: "/bilder/blogs/IMG_20250812_203012.jpg"
 description: "Von Flow, Müdigkeit und einem Fast-Unfall am Abseilstand"
+collection: "Green seven"
 ---
 
 Hallo ihr!  

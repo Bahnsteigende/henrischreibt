@@ -3,6 +3,7 @@ title: "Bobo 7 Summit Ecopoint 3 - Letzte Vorbereitungen"
 date: 2025-07-25
 image: "/bilder/blog-bilder/bobo3.jpg"
 description: "Gran Paradiso und die letzten Vorbereitungen"
+collection: "Green seven"
 ---
 
 Hallo FreundInnen,

@@ -17,6 +17,7 @@ type PostMeta = {
   slug: string;
   description: string;
   image: string;
+  collection?: string; // <— optionales Feld für Sammlungen
 };
 
 const posts: PostMeta[] = files
@@ -31,11 +32,37 @@ const posts: PostMeta[] = files
       description: data.description,
       image: data.image,
       slug: filename.replace('.md', ''),
+      collection: data.collection, 
     };
   })
-  
+
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // ⬅ Sortierung nach Datum absteigend
 
+
+// Gruppieren nach collection
+const grouped = posts.reduce((acc, post) => {
+  const key = post.collection || post.slug; // Sammlung oder einzelner Post
+  if (!acc[key]) {
+    acc[key] = {
+      collection: post.collection,
+      title: post.collection ? post.collection.replace(/-/g, " ") : post.title,
+      image: post.image,
+      description: post.collection
+        ? `Beiträge zur Sammlung "${post.collection}"`
+        : post.description,
+      slug: post.collection ? post.collection : post.slug,
+      date: post.date,
+      posts: [],
+    };
+  }
+  acc[key].posts.push(post);
+  return acc;
+}, {} as Record<string, any>);
+
+// Zu Array machen und nach Datum sortieren
+const collections = Object.values(grouped).sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 ---
 
 
@@ -47,36 +74,41 @@ const posts: PostMeta[] = files
         Hier werden meine Blogs aufgeführt, der Neueste ganz oben. Thematisch ist es ein Durcheinander, wie Ideen nun mal so sind. Vielleicht werden in Zukunft ein paar Kategorien eingeführt, wenn ich beschließe die Texte in der ein oder anderen Weise aufeinander aufbauen zu lassen. Viel Spaß!
       </p>
 
-  <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center;">
-    {posts.map(post => (
-      <li style="
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-        align-items: center;
-        width: 100%;
-        max-width: 600px;
-      ">
-        <a href={`../blogs/${post.slug}`} style="flex-shrink: 0;">
-          <img 
-            src={post.image} 
-            alt={post.title} 
-            style="
-              width: 150px;
-              height: 150px;
-              object-fit: cover;
-              border-radius: 12px;
-              box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            " 
-          />
-        </a>
-        <div>
-          <h2 style="margin: 0;"><a href={`../blogs/${post.slug}`}>{post.title}</a></h2>
-          <p style="margin: 0.5rem 0; color: #555;">{post.description}</p>
-          <small style="color: #888;"><DateDisplay date={post.date} /></small>
-        </div>
-      </li>
-    ))}
-  </ul>
+<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center;">
+  {collections.map(item => (
+    <li style="
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+    ">
+      <a href={item.collection ? `../collections/${item.slug}` : `../blogs/${item.slug}`} style="flex-shrink: 0;">
+        <img 
+          src={item.image} 
+          alt={item.title} 
+          style="
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          " 
+        />
+      </a>
+      <div>
+        <h2 style="margin: 0;">
+          <a href={item.collection ? `../collections/${item.slug}` : `../blogs/${item.slug}`}>
+            {item.title}
+          </a>
+        </h2>
+        <p style="margin: 0.5rem 0; color: #555;">{item.description}</p>
+        <small style="color: #888;"><DateDisplay date={item.date} /></small>
+      </div>
+    </li>
+  ))}
+</ul>
+
 
 </BaseLayout>

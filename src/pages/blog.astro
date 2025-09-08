@@ -1,0 +1,33 @@
+---
+// src/pages/blog.astro
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// Alle Blogposts aus der Collection laden
+const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Uncategorized (Posts ohne Kategorie)
+const uncategorizedPosts = posts.filter(post => !post.data.category);
+
+// Alle Kategorien unique
+const categories = Array.from(
+  new Set(posts.map(post => post.data.category).filter(Boolean))
+);
+---
+
+
+<h1>Blog</h1>
+
+<h2>Ohne Kategorie</h2>
+<ul>
+  {uncategorizedPosts.map(post => (
+    <li><a href={post.slug}>{post.data.title}</a></li>
+  ))}
+</ul>
+
+<h2>Kategorien</h2>
+<ul>
+  {categories.map(cat => (
+    <li><a href={`/blog/${cat.toLowerCase()}`}>{cat}</a></li>
+  ))}
+</ul>
