@@ -31,7 +31,7 @@ const { slug, posts } = Astro.props;
       {posts.map((post) => (
         <li style="margin-bottom: 2rem;">
           <a
-            href={`../blogs/${post.slug}`}
+            href={`../../blogs/${post.slug}`}
             style="text-decoration: none; color: inherit;"
           >
             <h2 class="text-xl font-semibold">{post.title}</h2>
