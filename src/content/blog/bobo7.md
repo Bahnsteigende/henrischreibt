@@ -1,5 +1,5 @@
 ---
-title: "Bobo 7 Summit Ecopoint 7 - Die zwei Spitzen"
+title: "Green seven 7 - Die zwei Spitzen"
 date: "2025-08-20"
 image: "/bilder/blogs/IMG_20250817_190631.jpg"
 description: "Von zwei ganz verschiedenen Spitzen in der Mitte des Projektes."
