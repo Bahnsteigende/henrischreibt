@@ -34,8 +34,7 @@ Es war so ein Moment, in dem die Zeit stillsteht: „Kann ich etwas tun? Nein. S
 Im letzten Moment – und wir wissen bis heute nicht, wie er das geschafft hat – hielt er sich mit einer Hand an einem Stein fest und bremste so den Fall. Wäre er in dem Moment andersherum gefallen (er hat sich mehrmals gedreht), hätte er 20 cm daneben mit der Hand nach einem Griff gesucht, wäre er 15 m im freien Fall neben uns aufgekommen, eventuell sogar auf Leuten, die dort zu dem Zeitpunkt abstiegen.
 Ich will hier gar nicht analysieren, wie das passieren konnte oder was das für ein Typ war; es prägte den Gipfeltag nur so deutlich, dass ich es nicht verschweigen wollte.
 -->
--
-
+\-
 
 Außer diesem Zwischenfall hat dann jedoch alles gut funktioniert, und wir sind erst zu Fuß und dann mit dem Fahrrad 3000 Hm vom Gipfel ins Tal abgestiegen, um dort ein paar Stunden mehr auf dem Campingplatz zu genießen.
 Am nächsten Tag ging es dann mit 10 km Umweg – zum absoluten Leidwesen eines grimmigen Philipps – zum Weißensee, um ein letztes Mal gemeinsam Zeit in der großen Gruppe zu verbringen. Das Wetter am Triglav zeichnete sich nämlich von Tag zu Tag als schlechter ab, sodass nur Philipp, Nino und ich die Flexibilität und Motivation hatten, ein Wetterfenster abzupassen.
