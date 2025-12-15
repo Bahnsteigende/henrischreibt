@@ -1,12 +1,17 @@
 @import "tailwindcss";
 a {
-  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 a:hover {
   color: #5e5b5bc5;
 }
+
+@import "tailwindcss";
+b {
+  color: #a5a4a4c5;
+}
+
 
 p {
   margin-bottom: 0.5rem; /* statt nur 1rem oder was Astro standardmäßig nutzt */

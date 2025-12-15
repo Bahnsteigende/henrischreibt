@@ -1,0 +1,54 @@
+---
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DateDisplay from '../../components/DateDisplay.astro';
+---
+
+<BaseLayout title="Burning a rome">
+  <article class="px-6 py-8 md:px-16 max-w-3xl mx-auto">
+        <p class="text-sm text-gray-600 mb-4">2025</p>
+
+    <h1 class="text-2xl font-bold mb-4">Burning a rome</h1>
+    <section class="mt-14 rounded-lg bg-gray-50 px-6 py-6 tracking-wide">
+      <p>
+        I feel like burning a Rome<br />
+        Just to speak in past tense<br />
+        I feel like burning a Rome <br />
+        In hopes of relevance.<br />
+        
+      </p>
+
+      <p>
+        And while Rome is burning<br />
+Every house and every tree,<br />
+And while Rome is burning<br />
+There is a world besides me
+      </p>
+
+      <p>
+        And in the glimming ashes<br />
+The warmth of change and pain,<br />
+In the glimming ashes<br />
+I am awaiting for the rain.
+      </p>
+
+      <p>
+        And as chaos sets for something new<br />
+And I begin to return<br />
+To the place reminding me of you<br />
+I find another Rome to burn.
+      </p>
+    </section>
+
+    <h3 class="mt-12">
+      <a
+        href="/portfolio"
+        class="text-gray-800 underline hover:text-black"
+      >
+        Zurück zum Portfolio
+      </a>
+    </h3>
+  </article>
+</BaseLayout>
