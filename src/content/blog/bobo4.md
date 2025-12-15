@@ -1,6 +1,6 @@
 ---
 title: "Green seven 4 - Daumen hoch"
-date: "2025-08-06"
+date: 2025-08-06
 image: "/bilder/blogs/IMG_20250804_094730.jpg"
 description: "Erste Unfälle, Gedanken und der erste Berg"
 collection: "Green seven"

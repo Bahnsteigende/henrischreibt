@@ -1,6 +1,6 @@
 ---
 title: "Green seven 2 - Vorbereitungen "
-date: "2025-07-09"
+date: 2025-07-09
 image: "/bilder/blog-bilder/bobo2.jpg"
 description: "Vorbereitungen für das Projekt und ein paar Schwenks aus dem Leben"
 collection: "Green seven"
