@@ -1,0 +1,36 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-ink/10">
+  <div class="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-12 md:flex-row md:items-start md:justify-between">
+    <div>
+      <p class="font-display text-lg">Henri</p>
+      <p class="mt-1 text-sm text-ink/60">&copy; {year} — Alle Rechte vorbehalten</p>
+    </div>
+
+    <!-- TODO: action/Anbieter ergänzen, sobald der Newsletter-Anbieter feststeht -->
+    <form class="w-full max-w-sm">
+      <label for="newsletter-email" class="block text-sm font-medium">
+        Newsletter abonnieren
+      </label>
+      <div class="mt-2 flex gap-2">
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          required
+          placeholder="deine@email.de"
+          class="w-full border border-ink/20 bg-transparent px-3 py-2 text-sm outline-none focus:border-ink/50"
+        />
+        <button
+          type="submit"
+          class="shrink-0 border border-ink px-4 py-2 text-sm font-medium hover:bg-ink hover:text-paper"
+        >
+          Anmelden
+        </button>
+      </div>
+      <p class="mt-2 text-xs text-ink/50">Kein Spam, jederzeit abbestellbar.</p>
+    </form>
+  </div>
+</footer>
