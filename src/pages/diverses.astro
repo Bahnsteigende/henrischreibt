@@ -1,13 +1,53 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import DateDisplay from "../components/DateDisplay.astro";
+import { getCollection } from "astro:content";
+
+const entries = (await getCollection("diverses")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
-<BaseLayout title="Diverses — Henri">
+<BaseLayout
+  title="Diverses — Henri"
+  description="Eine freie Sammlung für alles, was sonst nirgends hineinpasst."
+>
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h1 class="font-display text-3xl">Diverses</h1>
     <p class="mt-4 text-ink/60">
-      Eine freie Sammlung für alles, was sonst nirgends hineinpasst —
-      darunter auch eigene Texte.
+      Eine freie Sammlung für alles, was sonst nirgends hineinpasst — darunter
+      auch eigene Texte.
     </p>
+
+    <ul class="mt-8 flex flex-col divide-y divide-ink/10">
+      {
+        entries.map((entry) => (
+          <li class="py-4">
+            <a
+              href={entry.data.url ?? `/diverses/${entry.slug}`}
+              target={entry.data.url ? "_blank" : undefined}
+              rel={entry.data.url ? "noopener" : undefined}
+              class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
+            >
+              <span class="font-display text-lg group-hover:underline">
+                {entry.data.title}
+              </span>
+              <span class="shrink-0 text-xs text-ink/50 sm:pl-4">
+                <DateDisplay date={entry.data.date.toISOString()} />
+              </span>
+            </a>
+            {entry.data.description && (
+              <p class="mt-1 text-sm text-ink/60">{entry.data.description}</p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      entries.length === 0 && (
+        <p class="mt-8 text-sm text-ink/50">Noch keine Einträge vorhanden.</p>
+      )
+    }
   </section>
 </BaseLayout>

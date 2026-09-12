@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DateDisplay from "../../components/DateDisplay.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("diverses", (entry) => !entry.data.url);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} — Henri`} description={entry.data.description}>
+  <article class="mx-auto max-w-3xl px-6 py-16">
+    <h1 class="font-display text-3xl">{entry.data.title}</h1>
+    <p class="mt-2 text-sm text-ink/50">
+      <DateDisplay date={entry.data.date.toISOString()} />
+    </p>
+
+    <div class="article-content mt-8 text-base leading-relaxed text-ink/90">
+      <Content />
+    </div>
+
+    <p class="mt-12">
+      <a href="/diverses" class="text-sm underline hover:no-underline">← Zurück zu Diverses</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-content :global(p) {
+    margin-bottom: 1.25em;
+  }
+</style>

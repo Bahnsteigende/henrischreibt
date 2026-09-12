@@ -23,7 +23,18 @@ const schreibportfolioCollection = defineCollection({
   }),
 });
 
+const diversesCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    type: z.enum(['text', 'sonstiges']).default('sonstiges'),
+    description: z.string().optional(),
+    url: z.string().url().optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   schreibportfolio: schreibportfolioCollection,
+  diverses: diversesCollection,
 };
