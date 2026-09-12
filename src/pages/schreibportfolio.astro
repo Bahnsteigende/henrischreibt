@@ -1,13 +1,99 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const entries = (await getCollection("schreibportfolio")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
-<BaseLayout title="Schreibportfolio — Henri">
+<BaseLayout
+  title="Schreibportfolio — Henri"
+  description="Veröffentlichte Artikel, verlinkt zu ihren Publikationen."
+>
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h1 class="font-display text-3xl">Schreibportfolio</h1>
     <p class="mt-4 text-ink/60">
-      Hier entsteht bald eine sortier- und filterbare Übersicht meiner
-      veröffentlichten Artikel.
+      Veröffentlichte Artikel — sortierbar nach Publisher, Datum und Kategorie.
     </p>
+
+    <form class="mt-8 flex flex-wrap items-center gap-4 border-y border-ink/10 py-4 text-sm">
+      <label class="flex items-center gap-2">
+        Sortieren nach
+        <select id="sort-key" class="border border-ink/20 bg-transparent px-2 py-1">
+          <option value="date">Datum</option>
+          <option value="publisher">Publisher</option>
+          <option value="category">Kategorie</option>
+        </select>
+      </label>
+      <label class="flex items-center gap-2">
+        Reihenfolge
+        <select id="sort-direction" class="border border-ink/20 bg-transparent px-2 py-1">
+          <option value="desc">Absteigend</option>
+          <option value="asc">Aufsteigend</option>
+        </select>
+      </label>
+    </form>
+
+    <ul id="entry-list" class="mt-8 flex flex-col divide-y divide-ink/10">
+      {
+        entries.map((entry) => (
+          <li
+            class="py-4"
+            data-publisher={entry.data.publisher}
+            data-category={entry.data.category}
+            data-date={entry.data.date.toISOString()}
+          >
+            <a
+              href={entry.data.url}
+              target={entry.data.external ? "_blank" : undefined}
+              rel={entry.data.external ? "noopener" : undefined}
+              class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
+            >
+              <span class="font-display text-lg group-hover:underline">{entry.data.title}</span>
+              <span class="shrink-0 text-xs text-ink/50 sm:pl-4">
+                {entry.data.publisher} · {entry.data.category} · {entry.data.date.getFullYear()}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      entries.length === 0 && (
+        <p class="mt-8 text-sm text-ink/50">Noch keine Einträge vorhanden.</p>
+      )
+    }
   </section>
+
+  <script>
+    const list = document.getElementById("entry-list")!;
+    const items = Array.from(document.querySelectorAll<HTMLLIElement>("#entry-list > li"));
+    const sortKeySelect = document.getElementById("sort-key") as HTMLSelectElement;
+    const sortDirectionSelect = document.getElementById("sort-direction") as HTMLSelectElement;
+
+    function applySort() {
+      const key = sortKeySelect.value;
+      const dir = sortDirectionSelect.value === "asc" ? 1 : -1;
+
+      const sorted = [...items].sort((a, b) => {
+        if (key === "date") {
+          const dateA = new Date(a.dataset.date ?? 0).getTime();
+          const dateB = new Date(b.dataset.date ?? 0).getTime();
+          return dir * (dateA - dateB);
+        }
+        const dataset = a.dataset as Record<string, string>;
+        const datasetB = b.dataset as Record<string, string>;
+        const valueA = (dataset[key] ?? "").toLowerCase();
+        const valueB = (datasetB[key] ?? "").toLowerCase();
+        return dir * valueA.localeCompare(valueB);
+      });
+
+      for (const item of sorted) list.appendChild(item);
+    }
+
+    sortKeySelect.addEventListener("change", applySort);
+    sortDirectionSelect.addEventListener("change", applySort);
+  </script>
 </BaseLayout>
