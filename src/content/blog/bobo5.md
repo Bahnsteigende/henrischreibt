@@ -3,7 +3,7 @@ title: "Green seven 5 - Mont Blanc"
 date: 2025-08-11
 image: "/bilder/blogs/2025_0808_18375000.jpg"
 description: "Ein projektprägendes Vorhaben, der Mont Blanc"
-category: "Bergsteigen"
+category: "Unterwegs"
 tags: ["Mont Blanc"]
 series: "Green Seven"
 ---

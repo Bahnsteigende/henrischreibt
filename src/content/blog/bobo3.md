@@ -3,7 +3,7 @@ title: "Green seven 3 - Letzte Vorbereitungen"
 date: 2025-07-25
 image: "/bilder/blog-bilder/bobo3.jpg"
 description: "Gran Paradiso und die letzten Vorbereitungen"
-category: "Bergsteigen"
+category: "Unterwegs"
 tags: ["Gran Paradiso"]
 series: "Green Seven"
 ---

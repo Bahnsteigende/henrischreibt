@@ -3,7 +3,7 @@ title: "Freier gleicher Wille"
 date: 2024-12-02
 image: "/bilder/blog-bilder/freiergleicherwille.jpg"
 description: "Jeden Dienstag gehe ich nach meinen Veranstaltungen in die Bibliothek des philosophischen Seminars. Jeden Dienstag…"
-category: "Philosophie"
+category: "Gedanken"
 tags: []
 ---
 

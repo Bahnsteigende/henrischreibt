@@ -8,7 +8,6 @@ const posts = (await getCollection("blog")).sort(
 );
 
 const categories = [...new Set(posts.map((post) => post.data.category))].sort();
-const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 ---
 
 <BaseLayout
@@ -36,14 +35,6 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
         </select>
       </label>
 
-      <label class="flex items-center gap-2">
-        Tag
-        <select id="filter-tag" class="border border-ink/20 bg-transparent px-2 py-1">
-          <option value="">Alle</option>
-          {tags.map((tag) => <option value={tag}>{tag}</option>)}
-        </select>
-      </label>
-
       <label class="ml-auto flex items-center gap-2">
         Sortierung
         <select id="sort-order" class="border border-ink/20 bg-transparent px-2 py-1">
@@ -57,11 +48,18 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
       {
         posts.map((post) => (
           <li
-            class="post-item border-b border-ink/10 pb-8"
+            class="post-item flex gap-4 border-b border-ink/10 pb-8"
             data-category={post.data.category}
-            data-tags={post.data.tags.join(",")}
             data-date={post.data.date.toISOString()}
           >
+            {post.data.image && (
+              <img
+                src={post.data.image}
+                alt=""
+                class="h-20 w-20 shrink-0 object-cover"
+                loading="lazy"
+              />
+            )}
             <a href={`/blog/${post.slug}`} class="group block">
               <h2 class="font-display text-xl group-hover:underline">
                 {post.data.title}
@@ -91,13 +89,11 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
     const list = document.getElementById("post-list")!;
     const items = Array.from(document.querySelectorAll<HTMLLIElement>(".post-item"));
     const categorySelect = document.getElementById("filter-category") as HTMLSelectElement;
-    const tagSelect = document.getElementById("filter-tag") as HTMLSelectElement;
     const sortSelect = document.getElementById("sort-order") as HTMLSelectElement;
     const noResults = document.getElementById("no-results")!;
 
     function applyFilters() {
       const category = categorySelect.value;
-      const tag = tagSelect.value;
       const order = sortSelect.value;
       let visibleCount = 0;
 
@@ -108,10 +104,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
       });
 
       for (const item of sorted) {
-        const matchesCategory = !category || item.dataset.category === category;
-        const itemTags = item.dataset.tags ? item.dataset.tags.split(",") : [];
-        const matchesTag = !tag || itemTags.includes(tag);
-        const visible = matchesCategory && matchesTag;
+        const visible = !category || item.dataset.category === category;
         item.hidden = !visible;
         if (visible) visibleCount++;
         list.appendChild(item);
@@ -121,7 +114,6 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
     }
 
     categorySelect.addEventListener("change", applyFilters);
-    tagSelect.addEventListener("change", applyFilters);
     sortSelect.addEventListener("change", applyFilters);
   </script>
 </BaseLayout>

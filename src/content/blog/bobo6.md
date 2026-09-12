@@ -3,7 +3,7 @@ title: "Green seven 6 – im Tief"
 date: 2025-08-13
 image: "/bilder/blogs/IMG_20250812_203012.jpg"
 description: "Von Flow, Müdigkeit und einem Fast-Unfall am Abseilstand"
-category: "Bergsteigen"
+category: "Unterwegs"
 tags: ["Dufourspitze"]
 series: "Green Seven"
 ---

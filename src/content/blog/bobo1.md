@@ -3,7 +3,7 @@ title: "Green Seven 1 - Anfang und Vorstellung"
 date: 2025-02-15
 image: "/bilder/blog-bilder/bobo1.jpg"
 description: "Der Anfang einer Reise zu den höchsten Bergen der Alpenländer - Eine Dokumentation"
-category: "Bergsteigen"
+category: "Unterwegs"
 tags: []
 series: "Green Seven"
 ---
