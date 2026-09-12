@@ -1,12 +1,14 @@
 import { defineCollection, z } from 'astro:content';
 
-// Collection "blog" mit optionaler Kategorie
 const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
-    date: z.date(), // z.B. '2025-09-08'
-    collection: z.string().optional(),
+    date: z.date(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    series: z.string().optional(),
     description: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 

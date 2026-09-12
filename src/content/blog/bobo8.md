@@ -3,7 +3,9 @@ title: "Green seven 8 - Das Ende der Reise"
 date: 2025-09-05
 image: "/bilder/blog-bilder/bobo8.jpg"
 description: "Von einer ambivalenten Glockner-Besteigung und dem Ende der Tour."
-collection: "Green seven"
+category: "Bergsteigen"
+tags: ["Großglockner", "Triglav"]
+series: "Green Seven"
 ---
 
 

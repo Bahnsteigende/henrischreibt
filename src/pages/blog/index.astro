@@ -1,13 +1,127 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import DateDisplay from "../../components/DateDisplay.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const categories = [...new Set(posts.map((post) => post.data.category))].sort();
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 ---
 
-<BaseLayout title="Blog — Henri">
+<BaseLayout
+  title="Blog — Henri"
+  description="Persönliche Geschichten, Gedanken und Reiseberichte."
+>
   <section class="mx-auto max-w-3xl px-6 py-16">
     <h1 class="font-display text-3xl">Blog</h1>
     <p class="mt-4 text-ink/60">
-      Hier entsteht bald die Übersicht aller Blogartikel, sortier- und
-      filterbar nach Kategorie, Tag und Datum.
+      Persönliche Geschichten, Gedanken und Reiseberichte.
+    </p>
+
+    <form
+      id="blog-filters"
+      class="mt-8 flex flex-wrap items-center gap-4 border-y border-ink/10 py-4 text-sm"
+    >
+      <label class="flex items-center gap-2">
+        Kategorie
+        <select
+          id="filter-category"
+          class="border border-ink/20 bg-transparent px-2 py-1"
+        >
+          <option value="">Alle</option>
+          {categories.map((category) => <option value={category}>{category}</option>)}
+        </select>
+      </label>
+
+      <label class="flex items-center gap-2">
+        Tag
+        <select id="filter-tag" class="border border-ink/20 bg-transparent px-2 py-1">
+          <option value="">Alle</option>
+          {tags.map((tag) => <option value={tag}>{tag}</option>)}
+        </select>
+      </label>
+
+      <label class="ml-auto flex items-center gap-2">
+        Sortierung
+        <select id="sort-order" class="border border-ink/20 bg-transparent px-2 py-1">
+          <option value="desc">Neueste zuerst</option>
+          <option value="asc">Älteste zuerst</option>
+        </select>
+      </label>
+    </form>
+
+    <ul id="post-list" class="mt-8 flex flex-col gap-8">
+      {
+        posts.map((post) => (
+          <li
+            class="post-item border-b border-ink/10 pb-8"
+            data-category={post.data.category}
+            data-tags={post.data.tags.join(",")}
+            data-date={post.data.date.toISOString()}
+          >
+            <a href={`/blog/${post.slug}`} class="group block">
+              <h2 class="font-display text-xl group-hover:underline">
+                {post.data.title}
+              </h2>
+              <p class="mt-1 text-xs tracking-wide text-ink/40 uppercase">
+                {post.data.category}
+                {post.data.series ? ` · ${post.data.series}` : ""}
+              </p>
+              {post.data.description && (
+                <p class="mt-2 text-sm text-ink/70">{post.data.description}</p>
+              )}
+              <p class="mt-2 text-xs text-ink/50">
+                <DateDisplay date={post.data.date.toISOString()} />
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p id="no-results" class="mt-8 hidden text-sm text-ink/50">
+      Keine Artikel für diese Auswahl.
     </p>
   </section>
+
+  <script>
+    const list = document.getElementById("post-list")!;
+    const items = Array.from(document.querySelectorAll<HTMLLIElement>(".post-item"));
+    const categorySelect = document.getElementById("filter-category") as HTMLSelectElement;
+    const tagSelect = document.getElementById("filter-tag") as HTMLSelectElement;
+    const sortSelect = document.getElementById("sort-order") as HTMLSelectElement;
+    const noResults = document.getElementById("no-results")!;
+
+    function applyFilters() {
+      const category = categorySelect.value;
+      const tag = tagSelect.value;
+      const order = sortSelect.value;
+      let visibleCount = 0;
+
+      const sorted = [...items].sort((a, b) => {
+        const dateA = new Date(a.dataset.date ?? 0).getTime();
+        const dateB = new Date(b.dataset.date ?? 0).getTime();
+        return order === "asc" ? dateA - dateB : dateB - dateA;
+      });
+
+      for (const item of sorted) {
+        const matchesCategory = !category || item.dataset.category === category;
+        const itemTags = item.dataset.tags ? item.dataset.tags.split(",") : [];
+        const matchesTag = !tag || itemTags.includes(tag);
+        const visible = matchesCategory && matchesTag;
+        item.hidden = !visible;
+        if (visible) visibleCount++;
+        list.appendChild(item);
+      }
+
+      noResults.hidden = visibleCount !== 0;
+    }
+
+    categorySelect.addEventListener("change", applyFilters);
+    tagSelect.addEventListener("change", applyFilters);
+    sortSelect.addEventListener("change", applyFilters);
+  </script>
 </BaseLayout>

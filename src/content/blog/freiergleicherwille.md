@@ -3,6 +3,8 @@ title: "Freier gleicher Wille"
 date: 2024-12-02
 image: "/bilder/blog-bilder/freiergleicherwille.jpg"
 description: "Jeden Dienstag gehe ich nach meinen Veranstaltungen in die Bibliothek des philosophischen Seminars. Jeden Dienstag…"
+category: "Philosophie"
+tags: []
 ---
 
 Jeden Dienstag gehe ich nach meinen Veranstaltungen in die Bibliothek des philosophischen Seminars. Jeden Dienstag mache ich in dem anfangs zu kaltem Raum die Heizung neben mir an, schiebe den Stuhl näher, schmiege mich an, und jeden Dienstag schaue ich hier erstmal eine Folge „the office“. Ich sitze da, lasse mich von der so angenehmen Romantisierung der Monotonie berieseln, und schaue aus dem Fenster. Ein Kirchturm baut sich vor mir auf. Wie jede Woche denke ich, wie schön es dämmert. Mein Blick schweift, während Jim in die Kamera schaut; Lernende Menschen und Bücher. Hinten am Ende des Regal fesselt ein Buch meinen Blick: „Statistical physics“. Ich denke an letzte Woche, in der mein Blick das selbe Buch fand. Das letzte Mal habe ich darin geblättert. Die Ironie, dass mir gerade dieses Buch in der philosophischen Bibliothek ins Auge fällt, wo ich doch hier bin um statistische Physik zu lernen, ist doch erstaunlich, dachte ich das letzte Mal, denke ich.

@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DateDisplay from "../../components/DateDisplay.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} — Henri`} description={post.data.description}>
+  <article class="mx-auto max-w-3xl px-6 py-16">
+    <p class="text-xs tracking-wide text-ink/40 uppercase">
+      {post.data.category}
+      {post.data.series ? ` · ${post.data.series}` : ""}
+    </p>
+    <h1 class="mt-2 font-display text-3xl">{post.data.title}</h1>
+    <p class="mt-2 text-sm text-ink/50">
+      <DateDisplay date={post.data.date.toISOString()} />
+    </p>
+
+    {
+      post.data.tags.length > 0 && (
+        <ul class="mt-4 flex flex-wrap gap-2 text-xs">
+          {post.data.tags.map((tag) => (
+            <li class="border border-ink/20 px-2 py-1">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      post.data.image && (
+        <img src={post.data.image} alt={post.data.title} class="mt-8 w-full object-cover" />
+      )
+    }
+
+    <div class="article-content mt-8 text-base leading-relaxed text-ink/90">
+      <Content />
+    </div>
+
+    <p class="mt-12">
+      <a href="/blog" class="text-sm underline hover:no-underline">← Zurück zum Blog</a>
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-content :global(p) {
+    margin-bottom: 1.25em;
+  }
+  .article-content :global(h2),
+  .article-content :global(h3) {
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+  }
+  .article-content :global(a) {
+    text-decoration: underline;
+  }
+  .article-content :global(figure) {
+    margin: 2rem 0;
+  }
+  .article-content :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

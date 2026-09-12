@@ -3,6 +3,8 @@ title: "Das Bahnsteigende"
 date: 2025-01-15
 image: "/bilder/blog-bilder/Bahnsteigende.jpg"
 description: "Es ist etwas magisches in der Zeit, in der ich eigentlich schon hätte aufbrechen müssen…"
+category: "Gedanken"
+tags: []
 ---
 
 Es ist etwas magisches in der Zeit, in der ich eigentlich schon hätte aufbrechen müssen um pünktlich zu kommen. Es ist so etwas wie eine Zwischenwelt, neben dem hier und dem da, und damit fallen alle Erwartungen ab, die dem hier anlasten, und hat jene die man dem da zuschreibt noch nicht aufgenommen.

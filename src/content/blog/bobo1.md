@@ -3,7 +3,9 @@ title: "Green Seven 1 - Anfang und Vorstellung"
 date: 2025-02-15
 image: "/bilder/blog-bilder/bobo1.jpg"
 description: "Der Anfang einer Reise zu den höchsten Bergen der Alpenländer - Eine Dokumentation"
-collection: "Green seven"
+category: "Bergsteigen"
+tags: []
+series: "Green Seven"
 ---
 
 Weil ich mich hier in geschriebener Form ein bisschen ausprobieren möchte, habe ich das Gefühl ich sollte mich auch mal im wirklichen „Blogformat“ versuchen. Aus jeweils einer Prise Selbstdarstellung sowie ehrlicher Leidenschaft möchte ich das machen, indem ich unseren Versuch dokumentiere im Sommer alle 7 (offiziell) höchsten Berge der Alpenländer unmotorisiert zu besteigen.
