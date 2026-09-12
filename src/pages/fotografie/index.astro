@@ -1,27 +1,34 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
-const kategorien = [
-  { href: "/fotografie/hochzeiten-events", label: "Hochzeiten & Events" },
-  { href: "/fotografie/outdoor", label: "Outdoor" },
-  { href: "/fotografie/sonstiges", label: "Sonstiges" },
-];
+import { fotografieKategorien } from "../../data/fotografie";
 ---
 
-<BaseLayout title="Fotografie — Henri">
-  <section class="mx-auto max-w-3xl px-6 py-16">
+<BaseLayout
+  title="Fotografie — Henri"
+  description="Fotografie aus Hochzeiten & Events, Outdoor und mehr."
+>
+  <section class="mx-auto max-w-5xl px-6 py-16">
     <h1 class="font-display text-3xl">Fotografie</h1>
-    <p class="mt-4 text-ink/60">Drei Rubriken, sortiert im Portfolio-Look.</p>
-    <ul class="mt-8 flex flex-col gap-2">
+    <p class="mt-4 max-w-2xl text-ink/60">Ein erster Eindruck meiner Arbeit — mehr folgt.</p>
+
+    <div class="mt-16 flex flex-col gap-16">
       {
-        kategorien.map((kat) => (
-          <li>
-            <a href={kat.href} class="underline hover:no-underline">
-              {kat.label}
-            </a>
-          </li>
+        fotografieKategorien.map((kategorie) => (
+          <div>
+            <h2 class="font-display text-2xl">{kategorie.title}</h2>
+            <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {kategorie.images.map((src) => (
+                <img
+                  src={src}
+                  alt={kategorie.title}
+                  class="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          </div>
         ))
       }
-    </ul>
+    </div>
   </section>
 </BaseLayout>
