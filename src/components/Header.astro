@@ -1,4 +1,6 @@
 ---
+import OwlLogo from "./OwlLogo.astro";
+
 const navItems = [
   { href: "/artikel", label: "Artikel" },
   { href: "/blog", label: "Blog" },
@@ -9,14 +11,35 @@ const navItems = [
 ---
 
 <header class="border-b border-ink/10">
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-    <a href="/" class="font-display text-xl tracking-tight">Start</a>
+  <div class="mx-auto grid max-w-5xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 py-5">
+    <div></div>
 
-    <!-- Mobile: JS-freies Ausklapp-Menü über <details>/<summary> -->
-    <details class="md:hidden">
-      <summary class="cursor-pointer list-none text-sm font-medium">Menü</summary>
-      <nav aria-label="Hauptnavigation">
-        <ul class="mt-4 flex flex-col gap-3 text-sm">
+    <a href="/" aria-label="Zur Startseite" class="justify-self-center">
+      <OwlLogo class="h-10 w-10" />
+    </a>
+
+    <div class="justify-self-end">
+      <!-- Mobile: JS-freies Ausklapp-Menü über <details>/<summary> -->
+      <details class="md:hidden">
+        <summary class="cursor-pointer list-none text-sm font-medium">Menü</summary>
+        <nav aria-label="Hauptnavigation">
+          <ul class="mt-4 flex flex-col gap-3 text-sm">
+            {
+              navItems.map((item) => (
+                <li>
+                  <a href={item.href} class="hover:underline">
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </details>
+
+      <!-- Desktop: horizontale Navigation -->
+      <nav aria-label="Hauptnavigation" class="hidden md:block">
+        <ul class="flex gap-8 text-sm">
           {
             navItems.map((item) => (
               <li>
@@ -28,21 +51,6 @@ const navItems = [
           }
         </ul>
       </nav>
-    </details>
-
-    <!-- Desktop: horizontale Navigation -->
-    <nav aria-label="Hauptnavigation" class="hidden md:block">
-      <ul class="flex gap-8 text-sm">
-        {
-          navItems.map((item) => (
-            <li>
-              <a href={item.href} class="hover:underline">
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+    </div>
   </div>
 </header>

@@ -1,0 +1,57 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 220 240"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  role="img"
+  aria-label="Eulen-Logo"
+>
+  <!-- zerzauste Federspitzen -->
+  <path d="M55 50 C48 37 44 25 46 17" />
+  <path d="M78 35 C74 23 76 13 82 7" />
+  <path d="M105 33 C103 20 106 10 112 5" />
+  <path d="M133 35 C137 23 143 15 150 12" />
+  <path d="M158 45 C165 35 175 28 183 25" />
+  <path d="M33 120 C22 128 12 133 5 132" />
+  <path d="M36 155 C26 165 15 172 6 173" />
+  <path d="M187 120 C198 128 208 133 215 132" />
+  <path d="M184 155 C194 165 205 172 214 173" />
+
+  <!-- Kopf -->
+  <path
+    d="M35 115 C30 75 65 37 110 35 C155 33 190 70 188 115 C190 150 180 180 155 200 C135 215 90 215 68 201 C42 183 32 153 35 115 Z"
+  />
+
+  <!-- Augenbrauen -->
+  <path d="M50 90 C65 78 95 78 108 92" />
+  <path d="M112 92 C125 78 155 78 170 90" />
+
+  <!-- Augen -->
+  <circle cx="83" cy="120" r="36" />
+  <circle cx="137" cy="120" r="36" />
+  <circle cx="90" cy="114" r="18" />
+  <circle cx="130" cy="114" r="18" />
+  <circle cx="93" cy="112" r="7" fill="currentColor" stroke="none" />
+  <circle cx="127" cy="112" r="7" fill="currentColor" stroke="none" />
+  <circle cx="90" cy="109" r="2" fill="var(--color-paper)" stroke="none" />
+  <circle cx="124" cy="109" r="2" fill="var(--color-paper)" stroke="none" />
+
+  <!-- Schnabel -->
+  <path d="M110 150 L130 150 L120 172 Z" />
+
+  <!-- Füße -->
+  <path d="M90 208 L90 224 M90 224 L80 234 M90 224 L90 238 M90 224 L100 234" />
+  <path d="M140 208 L140 224 M140 224 L130 234 M140 224 L140 238 M140 224 L150 234" />
+</svg>
