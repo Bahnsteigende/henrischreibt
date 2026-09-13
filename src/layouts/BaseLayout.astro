@@ -6,12 +6,43 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
+  publishedDate?: Date;
 }
 
 const {
   title = "Henri — Journalismus, Blog & Fotografie",
   description = "Journalistische Texte, ein persönlicher Blog und Fotografien von Henri.",
+  image = "/bilder/ich.jpg",
+  type = "website",
+  publishedDate,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image, Astro.site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Henri Wagner",
+  url: Astro.site?.toString(),
+  jobTitle: "Journalist, Autor und Fotograf",
+};
+
+const pageSchema =
+  type === "article"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: title,
+        description,
+        image: ogImageURL.toString(),
+        url: canonicalURL.toString(),
+        ...(publishedDate ? { datePublished: publishedDate.toISOString() } : {}),
+        author: { "@type": "Person", name: "Henri Wagner" },
+      }
+    : personSchema;
 ---
 
 <!doctype html>
@@ -22,6 +53,22 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Henri" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

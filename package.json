@@ -2,7 +2,9 @@
   "name": "henrischreibt",
   "type": "module",
   "version": "0.0.1",
-  "engines": { "node": "18.x" },
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -11,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.6",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.9.2",
     "gray-matter": "^4.0.3",

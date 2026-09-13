@@ -15,7 +15,12 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={`${entry.data.title} — Henri`} description={entry.data.description}>
+<BaseLayout
+  title={`${entry.data.title} — Henri`}
+  description={entry.data.description}
+  type="article"
+  publishedDate={entry.data.date}
+>
   <article class="mx-auto max-w-3xl px-6 py-16">
     <h1 class="font-display text-3xl">{entry.data.title}</h1>
     <p class="mt-2 text-sm text-ink/50">
