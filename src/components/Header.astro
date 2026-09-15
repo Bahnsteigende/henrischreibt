@@ -16,16 +16,23 @@ const navItems = [
       <img src="/bilder/logo-eule.png" alt="Eulen-Logo" class="h-16 w-auto" />
     </a>
 
-    <div class="justify-self-end">
-      <!-- Mobile: JS-freies Ausklapp-Menü über <details>/<summary> -->
+    <div class="relative justify-self-end">
+      <!-- Mobile: JS-freies Ausklapp-Menü über <details>/<summary>, als freischwebendes Panel -->
       <details class="md:hidden">
-        <summary class="cursor-pointer list-none text-sm font-medium">Menü</summary>
-        <nav aria-label="Hauptnavigation">
-          <ul class="mt-4 flex flex-col gap-3 text-sm">
+        <summary
+          class="cursor-pointer list-none text-sm font-medium select-none [&::-webkit-details-marker]:hidden"
+        >
+          Menü
+        </summary>
+        <nav
+          aria-label="Hauptnavigation"
+          class="absolute right-0 top-full z-30 mt-3 w-48 border border-ink/10 bg-paper p-5 shadow-lg"
+        >
+          <ul class="flex flex-col gap-4 text-sm">
             {
               navItems.map((item) => (
                 <li>
-                  <a href={item.href} class="hover:underline">
+                  <a href={item.href} class="block hover:underline">
                     {item.label}
                   </a>
                 </li>
