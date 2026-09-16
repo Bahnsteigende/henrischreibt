@@ -1,6 +1,6 @@
 ---
 title: "Burning a rome"
-date: 2025
+date: 2025-03-14
 type: "text"
 description: "Ein Gedicht."
 ---

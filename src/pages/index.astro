@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const teasers = [
@@ -16,32 +15,17 @@ const teasers = [
   {
     href: "/fotografie",
     title: "Fotografie",
-    text: "Bilder aus Hochzeiten & Events, Outdoor und mehr.",
+    text: "Von Hochzeiten zum Bergsteigen und zurück.",
   },
 ];
-
-// Bild ändern: neue Datei nach src/assets/site/ legen und den Dateinamen hier eintragen.
-// Die Quellenangabe unter dem Bild wird automatisch aus dem Dateinamen abgeleitet.
-// Passt das Bild farblich nicht mehr, die Akzentfarben (--color-accent...) in
-// src/styles/global.css von Hand nachziehen.
-const heroImageFile = "Cornelius_Nobertus_Gijsbrechts.jpeg";
-
-const siteImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/site/*.{jpg,jpeg,png}",
-  { eager: true }
-);
-const heroImage = siteImages[`/src/assets/site/${heroImageFile}`];
-if (!heroImage) throw new Error(`Startseite: Bild nicht gefunden — ${heroImageFile}`);
-const heroCaption = heroImageFile.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ");
 ---
 
 <BaseLayout>
-  <section class="mx-auto max-w-3xl px-6 py-20 text-center">
-    <h1 class="font-display text-3xl md:text-4xl">Willkommen auf der Website von Henri Wagner</h1>
-    <p class="mt-4 text-lg text-ink/70">Henri ist freier Journalist, leidenschaftlicher Autor und semiprofessioneller Fotograf.</p>
+  <section class="mx-auto max-w-3xl px-6 py-10 text-center">
+    <h1 class="font-display text-2xl md:text-3xl">Journalist, Autor und Fotograf.</h1>
   </section>
 
-  <section class="mx-auto grid max-w-5xl gap-8 px-6 pb-24 md:grid-cols-3">
+  <section class="mx-auto grid max-w-5xl gap-8 px-6 pb-16 md:grid-cols-3">
     {
       teasers.map((teaser) => (
         <a
@@ -53,21 +37,5 @@ const heroCaption = heroImageFile.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ")
         </a>
       ))
     }
-  </section>
-
-  <section class="mx-auto max-w-2xl px-6 pb-24">
-    <div class="bg-accent-soft/60 p-3 sm:p-5">
-      <Image
-        src={heroImage.default}
-        alt={heroCaption}
-        widths={[600, 1000, 1400]}
-        sizes="(min-width: 768px) 42rem, 100vw"
-        format="webp"
-        quality={82}
-        loading="lazy"
-        class="block w-full"
-      />
-    </div>
-    <p class="mt-3 text-center text-xs text-ink/50 sm:text-sm">Quelle: {heroCaption}</p>
   </section>
 </BaseLayout>

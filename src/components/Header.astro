@@ -10,7 +10,14 @@ const navItems = [
 
 <header class="border-b border-ink/10">
   <div class="mx-auto grid max-w-5xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 py-5">
-    <a href="/" class="justify-self-start font-display text-xl tracking-tight">Start</a>
+    <a href="/" class="group flex flex-col items-start justify-self-start">
+      <span class="font-display text-xl tracking-tight sm:text-2xl">
+        Henri <span class="text-accent transition-colors group-hover:text-accent-deep">Wagner</span>
+      </span>
+      <span class="mt-1 hidden text-[0.65rem] font-medium uppercase tracking-[0.2em] text-ink/40 sm:block">
+        Journalist · Autor · Fotograf
+      </span>
+    </a>
 
     <a href="/" aria-label="Zur Startseite" class="justify-self-center">
       <img src="/bilder/logo-eule.png" alt="Eulen-Logo" class="h-16 w-auto" />
