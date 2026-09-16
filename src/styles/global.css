@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Courier Prime", ui-monospace, "Courier New", monospace;
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --color-paper: #faf9f6;
