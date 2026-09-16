@@ -1,29 +1,81 @@
 ---
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { fotografieKategorien } from "../../data/fotografie";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/fotografie/**/*.{jpg,jpeg,png}",
+  { eager: true }
+);
+
+function resolveImage(file: string) {
+  const mod = imageModules[`/src/assets/fotografie/${file}`];
+  if (!mod) throw new Error(`Fotografie: Bild nicht gefunden — ${file}`);
+  return mod.default;
+}
+
+const kategorien = await Promise.all(
+  fotografieKategorien.map(async (kategorie) => ({
+    ...kategorie,
+    images: await Promise.all(
+      kategorie.images.map(async (bild) => {
+        const source = resolveImage(bild.file);
+        const full = await getImage({ src: source, width: 1920, format: "webp", quality: 82 });
+        return { ...bild, source, fullSrc: full.src };
+      })
+    ),
+  }))
+);
 ---
 
 <BaseLayout
   title="Fotografie — Henri"
-  description="Fotografie aus Hochzeiten & Events, Outdoor und mehr."
+  description="Fotografie aus Hochzeiten & Events, Outdoor, Monochrom und mehr."
 >
-  <section class="mx-auto max-w-5xl px-6 py-16">
-    <h1 class="font-display text-3xl">Fotografie</h1>
-    <p class="mt-4 max-w-2xl text-ink/60">Ein erster Eindruck meiner Arbeit — mehr folgt.</p>
+  <section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <h1 class="font-display text-4xl sm:text-5xl">Fotografie</h1>
+    <p class="mt-4 max-w-xl text-ink/60">
+      Ausgewählte Aufnahmen — von Hochzeiten und Events über Outdoor bis Monochrom.
+    </p>
 
-    <div class="mt-16 flex flex-col gap-16">
+    <div class="mt-16 flex flex-col gap-20 sm:mt-20 sm:gap-24">
       {
-        fotografieKategorien.map((kategorie) => (
+        kategorien.map((kategorie) => (
           <div>
-            <h2 class="font-display text-2xl">{kategorie.title}</h2>
-            <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {kategorie.images.map((src) => (
-                <img
-                  src={src}
-                  alt={kategorie.title}
-                  class="aspect-[4/3] w-full object-cover"
-                  loading="lazy"
-                />
+            <div class="flex items-baseline justify-between gap-4 border-b border-ink/10 pb-3">
+              <h2 class="font-display text-2xl sm:text-3xl">{kategorie.title}</h2>
+              <span class="shrink-0 text-xs text-ink/40">{kategorie.images.length} Bilder</span>
+            </div>
+            {kategorie.intro && (
+              <p class="mt-3 max-w-xl text-sm text-ink/60">{kategorie.intro}</p>
+            )}
+
+            <div class="masonry relative mt-6">
+              {kategorie.images.map((bild, index) => (
+                <button
+                  type="button"
+                  class="lightbox-trigger group relative mb-3 block w-full appearance-none overflow-hidden border-0 bg-ink/5 p-0 text-left cursor-zoom-in"
+                  data-src={bild.fullSrc}
+                  data-caption={bild.caption ?? ""}
+                >
+                  <Image
+                    src={bild.source}
+                    alt={bild.caption || `${kategorie.title} — Fotografie von Henri, Bild ${index + 1}`}
+                    widths={[400, 800, 1200]}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    format="webp"
+                    quality={80}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    class="block w-full transition duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                  {bild.caption && (
+                    <span class="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent px-3 pb-2 pt-10 opacity-0 transition duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                      <span class="block text-xs leading-snug text-paper sm:text-sm">
+                        {bild.caption}
+                      </span>
+                    </span>
+                  )}
+                </button>
               ))}
             </div>
           </div>
@@ -31,4 +83,149 @@ import { fotografieKategorien } from "../../data/fotografie";
       }
     </div>
   </section>
+
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/95 p-4 sm:p-10"
+    aria-hidden="true"
+  >
+    <button
+      type="button"
+      id="lightbox-close"
+      aria-label="Schließen"
+      class="absolute right-4 top-4 text-3xl leading-none text-paper/70 transition hover:text-paper sm:right-8 sm:top-8"
+    >
+      &times;
+    </button>
+    <button
+      type="button"
+      id="lightbox-prev"
+      aria-label="Vorheriges Bild"
+      class="absolute left-2 top-1/2 -translate-y-1/2 p-3 text-3xl leading-none text-paper/70 transition hover:text-paper sm:left-6"
+    >
+      &lsaquo;
+    </button>
+    <button
+      type="button"
+      id="lightbox-next"
+      aria-label="Nächstes Bild"
+      class="absolute right-2 top-1/2 -translate-y-1/2 p-3 text-3xl leading-none text-paper/70 transition hover:text-paper sm:right-6"
+    >
+      &rsaquo;
+    </button>
+    <figure class="flex max-h-full max-w-full flex-col items-center gap-3">
+      <img id="lightbox-image" src="" alt="" class="max-h-[85vh] max-w-[90vw] object-contain" />
+      <figcaption id="lightbox-caption" class="hidden max-w-xl text-center text-sm text-paper/70" />
+    </figure>
+  </div>
 </BaseLayout>
+
+<script>
+  const GAP = 12;
+
+  function columnsForWidth(width: number) {
+    if (width >= 1024) return 3;
+    if (width >= 640) return 2;
+    return 1;
+  }
+
+  function layoutMasonry(container: HTMLElement) {
+    const items = Array.from(container.children) as HTMLElement[];
+    if (items.length === 0) return;
+
+    const width = container.clientWidth;
+    const columns = columnsForWidth(window.innerWidth);
+    const colWidth = (width - GAP * (columns - 1)) / columns;
+    const colHeights = new Array(columns).fill(0);
+
+    items.forEach((item) => {
+      item.style.position = "absolute";
+      item.style.width = `${colWidth}px`;
+
+      let col = 0;
+      for (let i = 1; i < colHeights.length; i++) {
+        if (colHeights[i] < colHeights[col]) col = i;
+      }
+
+      item.style.left = `${col * (colWidth + GAP)}px`;
+      item.style.top = `${colHeights[col]}px`;
+      colHeights[col] += item.offsetHeight + GAP;
+    });
+
+    container.style.height = `${Math.max(0, ...colHeights) - GAP}px`;
+  }
+
+  function layoutAll() {
+    document.querySelectorAll<HTMLElement>(".masonry").forEach(layoutMasonry);
+  }
+
+  layoutAll();
+  window.addEventListener("load", layoutAll);
+
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layoutAll, 150);
+  });
+
+  const items = Array.from(document.querySelectorAll<HTMLElement>(".lightbox-trigger"));
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const btnClose = document.getElementById("lightbox-close");
+  const btnPrev = document.getElementById("lightbox-prev");
+  const btnNext = document.getElementById("lightbox-next");
+
+  let currentIndex = -1;
+
+  function openLightbox(index: number) {
+    const item = items[index];
+    if (!item || !lightbox || !(lightboxImage instanceof HTMLImageElement) || !lightboxCaption) return;
+
+    const caption = item.dataset.caption ?? "";
+    currentIndex = index;
+    lightboxImage.src = item.dataset.src ?? "";
+    lightboxImage.alt = caption;
+    lightboxCaption.textContent = caption;
+    lightboxCaption.classList.toggle("hidden", caption.length === 0);
+
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("overflow-hidden");
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("overflow-hidden");
+    currentIndex = -1;
+  }
+
+  function showRelative(delta: number) {
+    if (currentIndex === -1 || items.length === 0) return;
+    const next = (currentIndex + delta + items.length) % items.length;
+    openLightbox(next);
+  }
+
+  items.forEach((item, index) => {
+    item.addEventListener("click", () => openLightbox(index));
+  });
+
+  btnClose?.addEventListener("click", closeLightbox);
+  btnPrev?.addEventListener("click", () => showRelative(-1));
+  btnNext?.addEventListener("click", () => showRelative(1));
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox || lightbox.classList.contains("hidden")) return;
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") showRelative(-1);
+    if (event.key === "ArrowRight") showRelative(1);
+  });
+</script>
