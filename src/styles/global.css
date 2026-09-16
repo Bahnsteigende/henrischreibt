@@ -13,6 +13,10 @@
   --color-accent: #8a7355;
   --color-accent-soft: #efe7d6;
   --color-accent-deep: #4f4433;
+
+  /* Eigenständige Markenfarbe für den Namenszug im Header (src/components/Header.astro) —
+     bewusst kräftiger als --color-accent, damit der Name heraussticht. */
+  --color-brand: #9c3b1f;
 }
 
 html {
