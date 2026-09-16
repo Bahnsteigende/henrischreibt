@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import corneliusImage from "../assets/site/cornelius-gijsbrechts.jpeg";
+import henriOutdoorImage from "../assets/site/henri-outdoor.jpg";
 
 const teasers = [
   {
@@ -22,7 +25,7 @@ const teasers = [
 
 <BaseLayout>
   <section class="mx-auto max-w-3xl px-6 py-20 text-center">
-    <h1 class="font-display text-4xl md:text-5xl">Willkommen auf der Website von Henri Wagner</h1>
+    <h1 class="font-display text-3xl md:text-4xl">Willkommen auf der Website von Henri Wagner</h1>
     <p class="mt-4 text-lg text-ink/70">Henri ist freier Journalist, leidenschaftlicher Autor und semiprofessioneller Fotograf.</p>
   </section>
 
@@ -38,5 +41,28 @@ const teasers = [
         </a>
       ))
     }
+  </section>
+
+  <section class="mx-auto flex max-w-2xl flex-col gap-10 px-6 pb-24">
+    <Image
+      src={corneliusImage}
+      alt="Cornelis Norbertus Gijsbrechts — Trompe-l'œil, Rückseite eines gerahmten Gemäldes"
+      widths={[600, 1000, 1400]}
+      sizes="(min-width: 768px) 42rem, 100vw"
+      format="webp"
+      quality={82}
+      loading="lazy"
+      class="block w-full"
+    />
+    <Image
+      src={henriOutdoorImage}
+      alt="Henri auf dem Fahrrad in den Bergen"
+      widths={[600, 1000, 1400]}
+      sizes="(min-width: 768px) 42rem, 100vw"
+      format="webp"
+      quality={82}
+      loading="lazy"
+      class="block w-full"
+    />
   </section>
 </BaseLayout>
