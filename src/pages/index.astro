@@ -1,8 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import corneliusImage from "../assets/site/cornelius-gijsbrechts.jpeg";
-import henriOutdoorImage from "../assets/site/henri-outdoor.jpg";
 
 const teasers = [
   {
@@ -21,6 +19,20 @@ const teasers = [
     text: "Bilder aus Hochzeiten & Events, Outdoor und mehr.",
   },
 ];
+
+// Bild ändern: neue Datei nach src/assets/site/ legen und den Dateinamen hier eintragen.
+// Die Quellenangabe unter dem Bild wird automatisch aus dem Dateinamen abgeleitet.
+// Passt das Bild farblich nicht mehr, die Akzentfarben (--color-accent...) in
+// src/styles/global.css von Hand nachziehen.
+const heroImageFile = "Cornelius_Nobertus_Gijsbrechts.jpeg";
+
+const siteImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/site/*.{jpg,jpeg,png}",
+  { eager: true }
+);
+const heroImage = siteImages[`/src/assets/site/${heroImageFile}`];
+if (!heroImage) throw new Error(`Startseite: Bild nicht gefunden — ${heroImageFile}`);
+const heroCaption = heroImageFile.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ");
 ---
 
 <BaseLayout>
@@ -34,7 +46,7 @@ const teasers = [
       teasers.map((teaser) => (
         <a
           href={teaser.href}
-          class="block border border-ink/10 p-6 transition-colors hover:border-ink/30"
+          class="block border border-ink/10 p-6 transition-colors hover:border-accent"
         >
           <h2 class="font-display text-xl">{teaser.title}</h2>
           <p class="mt-2 text-sm text-ink/60">{teaser.text}</p>
@@ -43,26 +55,19 @@ const teasers = [
     }
   </section>
 
-  <section class="mx-auto flex max-w-2xl flex-col gap-10 px-6 pb-24">
-    <Image
-      src={corneliusImage}
-      alt="Cornelis Norbertus Gijsbrechts — Trompe-l'œil, Rückseite eines gerahmten Gemäldes"
-      widths={[600, 1000, 1400]}
-      sizes="(min-width: 768px) 42rem, 100vw"
-      format="webp"
-      quality={82}
-      loading="lazy"
-      class="block w-full"
-    />
-    <Image
-      src={henriOutdoorImage}
-      alt="Henri auf dem Fahrrad in den Bergen"
-      widths={[600, 1000, 1400]}
-      sizes="(min-width: 768px) 42rem, 100vw"
-      format="webp"
-      quality={82}
-      loading="lazy"
-      class="block w-full"
-    />
+  <section class="mx-auto max-w-2xl px-6 pb-24">
+    <div class="bg-accent-soft/60 p-3 sm:p-5">
+      <Image
+        src={heroImage.default}
+        alt={heroCaption}
+        widths={[600, 1000, 1400]}
+        sizes="(min-width: 768px) 42rem, 100vw"
+        format="webp"
+        quality={82}
+        loading="lazy"
+        class="block w-full"
+      />
+    </div>
+    <p class="mt-3 text-center text-xs text-ink/50 sm:text-sm">Quelle: {heroCaption}</p>
   </section>
 </BaseLayout>

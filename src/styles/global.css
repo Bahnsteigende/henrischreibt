@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Source Serif 4", ui-serif, Georgia, serif;
+  --font-display: "Courier Prime", ui-monospace, "Courier New", monospace;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --color-paper: #faf9f6;
   --color-ink: #1a1a18;
+
+  /* Akzentfarben, abgestimmt auf das Startseiten-Bild
+     (src/assets/site/Cornelius_Nobertus_Gijsbrechts.jpeg — siehe src/pages/index.astro).
+     Wird das Bild ausgetauscht, diese drei Töne von Hand an das neue Bild anpassen. */
+  --color-accent: #8a7355;
+  --color-accent-soft: #efe7d6;
+  --color-accent-deep: #4f4433;
 }
 
 html {
@@ -30,4 +37,8 @@ p {
 
 a {
   text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-accent);
 }

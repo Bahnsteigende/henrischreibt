@@ -34,6 +34,7 @@ export const fotografieKategorien: FotoKategorie[] = [
       { file: "Outdoor/outdoor-2.jpg" },
       { file: "Outdoor/outdoor-3.jpg" },
       { file: "Outdoor/outdoor-4.jpg" },
+      { file: "Outdoor/outdoor-5.jpg" },
     ],
   },
   {
