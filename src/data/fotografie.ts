@@ -23,14 +23,14 @@ export const fotografieKategorien: FotoKategorie[] = [
       { file: "HochzeitenEvents/events-1.png" },
       { file: "HochzeitenEvents/events-2.jpg" },
       { file: "HochzeitenEvents/events-3.jpg" },
-      { file: "HochzeitenEvents/events-4.jpg" },
+      { file: "HochzeitenEvents/events-4.jpg", caption: "Für das 22. Heidelberger Symposium organisierte ich einen Stadtrundgang zur jüdischen Geschichte der Stadt den der örtliche, roßartige Intellektuelle Norbert Giovannini hielt." },
       { file: "HochzeitenEvents/events-5.jpg" },
     ],
   },
   {
     title: "Outdoor",
     images: [
-      { file: "Outdoor/outdoor-1.jpg" },
+      { file: "Outdoor/outdoor-1.jpg", caption: "Auf dem Monte Cevedale im Sonnenaufgang."},
       { file: "Outdoor/outdoor-2.jpg" },
       { file: "Outdoor/outdoor-3.jpg" },
       { file: "Outdoor/outdoor-4.jpg" },
@@ -42,8 +42,8 @@ export const fotografieKategorien: FotoKategorie[] = [
     images: [
       { file: "Monochrom/monochrom-1.jpg" },
       { file: "Monochrom/monochrom-2.jpg" },
-      { file: "Monochrom/monochrom-3.jpg" },
-      { file: "Monochrom/monochrom-4.jpg" },
+      { file: "Monochrom/monochrom-3.jpg", caption: "Die Atlantikstraße in Norwegen in einer besonderen Komposition." },
+      { file: "Monochrom/monochrom-4.jpg", caption: "Mein bestes Werk." },
     ],
   },
   {

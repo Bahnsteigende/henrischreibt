@@ -1,0 +1,59 @@
+---
+interface Props {
+  text: string;
+  href: string;
+}
+
+const { text, href } = Astro.props;
+const repeats = Array.from({ length: 10 });
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${text} (öffnet auf YouTube)`}
+  class="group block overflow-hidden bg-[#16321f]/45 py-2"
+>
+  <div class="marquee-track flex w-max" aria-hidden="true">
+    {
+      [0, 1].map(() => (
+        <div class="flex shrink-0 items-center">
+          {repeats.map(() => (
+            <span class="flex items-center gap-2.5 px-5 text-sm font-bold text-paper">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-3.5 w-3.5 shrink-0 opacity-80"
+              >
+                <circle cx="5.5" cy="17.5" r="3.5" />
+                <circle cx="18.5" cy="17.5" r="3.5" />
+                <circle cx="15" cy="5" r="1" />
+                <path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+              </svg>
+              {text}
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-3.5 w-3.5 shrink-0 opacity-80"
+              >
+                <circle cx="5.5" cy="17.5" r="3.5" />
+                <circle cx="18.5" cy="17.5" r="3.5" />
+                <circle cx="15" cy="5" r="1" />
+                <path d="M12 17.5V14l-3-3 4-3 2 3h2" />
+              </svg>
+            </span>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</a>

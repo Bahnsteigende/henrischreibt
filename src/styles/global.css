@@ -8,11 +8,19 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Rationale";
+  src: url("/fonts/Rationale-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: "Newsreader", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   /* Für den Namenszug im Header (src/components/Header.astro). */
-  --font-brand: "Notable", ui-sans-serif, sans-serif;
+  --font-brand: "Rationale", ui-serif, Georgia, serif;
 
   --color-paper: #faf9f6;
   --color-ink: #1a1a18;
@@ -23,10 +31,6 @@
   --color-accent: #8a7355;
   --color-accent-soft: #efe7d6;
   --color-accent-deep: #4f4433;
-
-  /* Eigenständige Markenfarbe für den Namenszug im Header (src/components/Header.astro) —
-     bewusst kräftiger als --color-accent, damit der Name heraussticht. */
-  --color-brand: #9c3b1f;
 }
 
 html {
@@ -55,4 +59,21 @@ a {
 
 a:hover {
   color: var(--color-accent);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-track {
+  animation: marquee 180s linear infinite;
+}
+
+.group:hover .marquee-track {
+  animation-play-state: paused;
 }
