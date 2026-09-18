@@ -1,23 +1,25 @@
 ---
 const outlets = [
-  { name: "Spektrum.de", file: "spektrum.webp" },
-  { name: "c't Magazin", file: "C'T_Magazin.png" },
-  { name: "Physik Journal", file: "physik-journal.png" },
-  { name: "DAV Panorama", file: "dav-panorama.png" },
+  { name: "Spektrum.de", file: "spektrum.webp", url: "https://www.spektrum.de" },
+  { name: "c't Magazin", file: "C'T_Magazin.png", url: "https://www.heise.de/ct/" },
+  { name: "Physik Journal", file: "physik-journal.png", url: "https://www.pro-physik.de/physik-journal" },
+  { name: "DAV Panorama", file: "dav-panorama.png", url: "https://www.alpenverein.de/DAV-Services/Panorama-Magazin/" },
 ];
 ---
 
-<section class="mx-auto max-w-5xl px-6 pb-16">
+<section class="mx-auto max-w-5xl px-6 pb-fluid-xl">
   <p class="text-center text-sm text-ink/50">Veröffentlicht u. a. in</p>
-  <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+  <ul class="mt-fluid-sm flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
     {
       outlets.map((outlet) => (
         <li>
-          <img
-            src={`/logos/${outlet.file}`}
-            alt={outlet.name}
-            class="h-7 w-auto mix-blend-multiply grayscale opacity-60 transition hover:opacity-100 hover:grayscale-0"
-          />
+          <a href={outlet.url} target="_blank" rel="noopener noreferrer" aria-label={outlet.name}>
+            <img
+              src={`/logos/${outlet.file}`}
+              alt={outlet.name}
+              class="h-7 w-auto mix-blend-multiply grayscale opacity-60 transition hover:opacity-100 hover:grayscale-0"
+            />
+          </a>
         </li>
       ))
     }

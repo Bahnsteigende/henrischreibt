@@ -11,7 +11,7 @@ const entries = (await getCollection("schreibportfolio")).sort(
   title="Artikel — Henri"
   description="Veröffentlichte Artikel, verlinkt zu ihren Publikationen."
 >
-  <section class="mx-auto max-w-3xl px-6 py-16">
+  <section class="mx-auto max-w-3xl px-6 py-fluid-xl">
     <h1 class="font-display text-3xl">Artikel</h1>
     <p class="mt-4 text-ink/60">
       Eine Auswahl meiner bisher veröffentlichten Artikel, verlinkt zu ihren Publikationen. Leider oft hinter Paywalls :/
@@ -39,7 +39,10 @@ const entries = (await getCollection("schreibportfolio")).sort(
       {
         entries.map((entry) => (
           <li
-            class="py-4"
+            class:list={[
+              "py-4",
+              entry.data.highlight && "-mx-3 rounded-md bg-accent-soft/50 px-3",
+            ]}
             data-publisher={entry.data.publisher}
             data-category={entry.data.category}
             data-date={entry.data.date.toISOString()}
@@ -50,7 +53,35 @@ const entries = (await getCollection("schreibportfolio")).sort(
               rel={entry.data.external ? "noopener" : undefined}
               class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
             >
-              <span class="font-display text-lg group-hover:underline">{entry.data.title}</span>
+              <span class="font-display text-lg group-hover:underline">
+                {entry.data.title}
+                {entry.data.highlight && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="ml-1.5 inline-block h-3.5 w-3.5 align-middle text-accent"
+                    aria-label="Highlight"
+                  >
+                    <title>Highlight</title>
+                    <path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007Z" />
+                  </svg>
+                )}
+                {entry.data.category === "Buchkritik" && (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-1.5 inline-block h-4 w-4 align-middle text-ink/40"
+                    aria-label="Buchkritik"
+                  >
+                    <title>Buchkritik</title>
+                    <path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25a8.987 8.987 0 0 0-3-.512c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
+                  </svg>
+                )}
+              </span>
               <span class="shrink-0 text-xs text-ink/50 sm:pl-4">
                 {entry.data.publisher} · {entry.data.category} · {entry.data.date.getFullYear()}
               </span>

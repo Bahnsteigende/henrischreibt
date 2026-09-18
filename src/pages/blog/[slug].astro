@@ -22,7 +22,7 @@ const { Content } = await render(post);
   type="article"
   publishedDate={post.data.date}
 >
-  <article class="mx-auto max-w-3xl px-6 py-16">
+  <article class="mx-auto max-w-3xl px-6 py-fluid-xl">
     <p class="text-xs tracking-wide text-ink/40 uppercase">
       {post.data.category}
       {post.data.series ? ` · ${post.data.series}` : ""}

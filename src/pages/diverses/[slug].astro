@@ -21,7 +21,7 @@ const { Content } = await render(entry);
   type="article"
   publishedDate={entry.data.date}
 >
-  <article class="mx-auto max-w-3xl px-6 py-16">
+  <article class="mx-auto max-w-3xl px-6 py-fluid-xl">
     <h1 class="font-display text-3xl">{entry.data.title}</h1>
     <p class="mt-2 text-sm text-ink/50">
       <DateDisplay date={entry.data.date.toISOString()} />

@@ -4,7 +4,7 @@ import { Content, frontmatter } from "../content/uebermich.md";
 ---
 
 <BaseLayout title="Über mich — Henri" description="Über Henri — Journalist, Autor und Fotograf.">
-  <article class="mx-auto max-w-3xl px-6 py-16">
+  <article class="mx-auto max-w-3xl px-6 py-fluid-xl">
     {
       frontmatter.image && (
         <img
@@ -27,58 +27,6 @@ import { Content, frontmatter } from "../content/uebermich.md";
           w.henri@gmx.de
         </a>
       </p>
-
-      <form
-        name="kontakt"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        class="mt-6 flex max-w-md flex-col gap-4"
-      >
-        <input type="hidden" name="form-name" value="kontakt" />
-        <p hidden>
-          <label>
-            Bitte nicht ausfüllen: <input name="bot-field" />
-          </label>
-        </p>
-
-        <label class="flex flex-col gap-1 text-sm">
-          Name
-          <input
-            type="text"
-            name="name"
-            required
-            class="border border-ink/20 bg-transparent px-3 py-2 outline-none focus:border-ink/50"
-          />
-        </label>
-
-        <label class="flex flex-col gap-1 text-sm">
-          E-Mail
-          <input
-            type="email"
-            name="email"
-            required
-            class="border border-ink/20 bg-transparent px-3 py-2 outline-none focus:border-ink/50"
-          />
-        </label>
-
-        <label class="flex flex-col gap-1 text-sm">
-          Nachricht
-          <textarea
-            name="message"
-            required
-            rows="5"
-            class="border border-ink/20 bg-transparent px-3 py-2 outline-none focus:border-ink/50"
-          />
-        </label>
-
-        <button
-          type="submit"
-          class="self-start border border-ink px-4 py-2 text-sm font-medium hover:bg-ink hover:text-paper"
-        >
-          Senden
-        </button>
-      </form>
     </div>
   </article>
 </BaseLayout>

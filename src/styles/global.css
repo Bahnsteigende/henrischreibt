@@ -31,6 +31,16 @@
   --color-accent: #8a7355;
   --color-accent-soft: #efe7d6;
   --color-accent-deep: #4f4433;
+
+  /* Fluide vertikale Abstände: wachsen mit der Bildschirmhöhe (vh), aber mit
+     Unter- und Obergrenze, damit es auf Handys nicht zu eng und auf großen
+     Monitoren nicht zu weit wird. Verwendung z.B. als py-fluid-lg, mt-fluid-2xl. */
+  --spacing-fluid-xs: clamp(0.75rem, 1vh + 0.4rem, 1.25rem);
+  --spacing-fluid-sm: clamp(1rem, 1.5vh + 0.5rem, 1.75rem);
+  --spacing-fluid-md: clamp(1.5rem, 3vh + 0.5rem, 3rem);
+  --spacing-fluid-lg: clamp(2rem, 5vh + 0.5rem, 5rem);
+  --spacing-fluid-xl: clamp(3rem, 7vh + 0.5rem, 7rem);
+  --spacing-fluid-2xl: clamp(4rem, 9vh + 0.5rem, 9rem);
 }
 
 html {

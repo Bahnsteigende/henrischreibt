@@ -20,6 +20,7 @@ const schreibportfolioCollection = defineCollection({
     category: z.string(),
     url: z.string().url(),
     external: z.boolean().default(true),
+    highlight: z.boolean().default(false),
   }),
 });
 
