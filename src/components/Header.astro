@@ -14,8 +14,18 @@ const navItems = [
       Henri <span class="text-ink/40">Wagner</span>
     </a>
 
-    <a href="/" aria-label="Zur Startseite" class="justify-self-center">
-      <img src="/bilder/logo-eule.png" alt="Eulen-Logo" class="h-16 w-auto" />
+    <a
+      href="/"
+      id="owl-logo"
+      aria-label="Zur Startseite (Klick für ein kleines Daumenkino)"
+      class="justify-self-center"
+    >
+      <img
+        id="owl-logo-img"
+        src="/bilder/daumenkino/frame-01.png"
+        alt="Eulen-Logo"
+        class="h-[4.1rem] w-auto transition hover:scale-105 sm:h-[4.8rem]"
+      />
     </a>
 
     <div class="relative justify-self-end">
@@ -61,3 +71,55 @@ const navItems = [
     </div>
   </div>
 </header>
+
+<script>
+  const FRAME_COUNT = 11;
+  const FRAME_DURATION = 55;
+  const framePaths = Array.from(
+    { length: FRAME_COUNT },
+    (_, i) => `/bilder/daumenkino/frame-${String(i + 1).padStart(2, "0")}.png`,
+  );
+
+  const link = document.getElementById("owl-logo") as HTMLAnchorElement | null;
+  const img = document.getElementById("owl-logo-img") as HTMLImageElement | null;
+
+  if (link && img) {
+    let preloaded = false;
+    const preloadFrames = () => {
+      if (preloaded) return;
+      preloaded = true;
+      for (const src of framePaths) {
+        const preload = new Image();
+        preload.src = src;
+      }
+    };
+    link.addEventListener("pointerenter", preloadFrames, { once: true });
+    link.addEventListener("focus", preloadFrames, { once: true });
+
+    let playing = false;
+    let expanded = false;
+
+    const playSequence = (forward: boolean) => {
+      playing = true;
+      const sequence = forward ? framePaths : [...framePaths].reverse();
+      let i = 0;
+      const step = () => {
+        img.src = sequence[i];
+        i++;
+        if (i < sequence.length) {
+          setTimeout(step, FRAME_DURATION);
+        } else {
+          playing = false;
+          expanded = forward;
+        }
+      };
+      step();
+    };
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (playing) return;
+      playSequence(!expanded);
+    });
+  }
+</script>
