@@ -1,0 +1,144 @@
+<!--
+  Willkommens-/Bestätigungsmail für Brevo — wird ausgelöst, NACHDEM ein Kontakt
+  auf den Bestätigungslink aus email-doi-confirm.html geklickt hat (Automation,
+  Schritt "Ja"-Zweig, siehe Kommentar dort).
+
+  Anders als die Double-Opt-In-Mail: Der Kontakt ist an dieser Stelle bereits voll
+  in Brevo angelegt, Personalisierung mit Kontakt-Attributen funktioniert also.
+  Der Vorname bleibt aktuell trotzdem meist leer, weil das Footer-Formular nur die
+  E-Mail-Adresse abfragt. Die Grussformel unten nutzt deshalb ein Jinja-If (Brevo
+  Template Language), das den Namen nur anhaengt, wenn er vorhanden ist, statt
+  z.B. "Hallo ," anzuzeigen. Sobald ein Namensfeld ergaenzt wird, greift es automatisch.
+
+  Dieser Schritt ist optional (siehe Brevo-Doku "Step 4"), macht die Bestätigung
+  aber für den Kontakt sichtbar und rundet den Einstieg ab.
+-->
+<!doctype html>
+<html lang="de" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Willkommen — Henri Wagner</title>
+<!--[if mso]>
+<noscript>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+</noscript>
+<style>
+  * { font-family: Georgia, 'Times New Roman', serif !important; }
+</style>
+<![endif]-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap');
+
+  body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+  body { margin: 0; padding: 0; width: 100% !important; background-color: #faf9f6; }
+
+  a.link-accent { color: #8a7355; }
+  a.link-muted { color: #9a9890; }
+
+  @media screen and (max-width: 600px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 24px !important; padding-right: 24px !important; }
+    .hero-title { font-size: 24px !important; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bg-paper { background-color: #1a1a18 !important; }
+    .text-ink { color: #f2f0ea !important; }
+    .text-muted { color: #a8a59c !important; }
+    .border-hairline { border-color: #38362f !important; }
+    .btn-outline { border-color: #f2f0ea !important; color: #f2f0ea !important; }
+  }
+</style>
+</head>
+<body class="bg-paper" style="margin:0; padding:0; background-color:#faf9f6;">
+
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all; font-size:1px; line-height:1px;">
+    Willkommen an Bord — dein Newsletter-Abo ist bestätigt.
+    &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  </div>
+
+  <center class="bg-paper" style="width:100%; background-color:#faf9f6;">
+  <!--[if mso]>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td>
+  <![endif]-->
+  <div class="container" style="max-width:600px; margin:0 auto;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+      <!-- Header: Eulen-Logo + Namenszug -->
+      <tr>
+        <td class="px border-hairline" style="padding:28px 24px 20px; text-align:center; border-bottom:1px solid #e6e4de;">
+          <a href="https://henrischreibt.de" target="_blank">
+            <img src="https://henrischreibt.de/bilder/daumenkino/frame-01.png" width="60" height="60" alt="Henri Wagner" style="display:block; margin:0 auto 10px; width:60px; height:auto;">
+          </a>
+          <div class="text-ink" style="font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:18px; color:#1a1a18;">
+            Henri <span style="color:#9a9890;">Wagner</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Willkommen -->
+      <tr>
+        <td class="px" style="padding:48px 40px 4px; text-align:center;">
+          <p class="text-muted" style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9a9890;">
+            Willkommen
+          </p>
+          <h1 class="hero-title text-ink" style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-weight:400; font-size:28px; line-height:1.3; color:#1a1a18;">
+            Dein Abo ist bestätigt
+          </h1>
+          <p class="text-ink" style="margin:16px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.65; color:#4a4843;">
+            Hallo{% if contact.FIRSTNAME %} {{ contact.FIRSTNAME }}{% endif %}, schön, dass du dabei bist. Ab jetzt bekommst du [Rhythmus, z. B. „einmal im Monat"] Neues aus Journalismus, Blog und Fotografie direkt in dein Postfach.
+          </p>
+        </td>
+      </tr>
+
+      <!-- CTA Button -->
+      <tr>
+        <td class="px" style="padding:32px 24px 40px; text-align:center;">
+          <a href="https://henrischreibt.de/artikel" class="btn-outline" style="display:inline-block; padding:12px 30px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:600; color:#1a1a18; text-decoration:none; border:1px solid #1a1a18;">
+            Schon mal reinlesen
+          </a>
+        </td>
+      </tr>
+
+      <!-- Footer (wie Footer.astro) -->
+      <tr>
+        <td class="px border-hairline" style="padding:36px 24px 8px; border-top:1px solid #e6e4de; text-align:center;">
+          <p style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-size:16px; color:#1a1a18;">
+            Henri Wagner
+          </p>
+          <p class="text-muted" style="margin:6px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#9a9890;">
+            &copy; [Jahr] — Alle Rechte vorbehalten
+          </p>
+          <p style="margin:10px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+            <a href="https://henrischreibt.de/datenschutz" class="link-accent" style="color:#8a7355; text-decoration:underline;">Datenschutz</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.linkedin.com/in/henri-wagner-ab5056249/" class="link-accent" style="color:#8a7355; text-decoration:underline;">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.instagram.com/11henri9/" class="link-accent" style="color:#8a7355; text-decoration:underline;">Instagram</a>
+          </p>
+          <p class="text-muted" style="margin:20px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:1.7; color:#9a9890;">
+            Du erhältst diese E-Mail, weil du dich für den Newsletter von Henri Wagner angemeldet und bestätigt hast.<br>
+            Henri Wagner · Bunsenstraße 18 · 69115 Heidelberg<br>
+            <a href="{{ unsubscribe }}" class="link-muted" style="color:#9a9890; text-decoration:underline;">Newsletter abbestellen</a>
+          </p>
+        </td>
+      </tr>
+
+      <tr><td style="padding:32px 0 0; line-height:1px; font-size:1px;">&nbsp;</td></tr>
+
+    </table>
+  </div>
+  <!--[if mso]></td></tr></table><![endif]-->
+  </center>
+</body>
+</html>

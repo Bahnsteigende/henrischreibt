@@ -1,0 +1,266 @@
+<!--
+  Newsletter-Vorlage für Brevo — abgestimmt auf das Design von henrischreibt.de
+  (Header.astro, Footer.astro, PublishedIn.astro, blog/index.astro, artikel.astro)
+
+  IMPORT IN BREVO
+  1. Kampagne erstellen → Editor "Mit eigenem HTML-Code" wählen und diese Datei einfügen.
+  2. Bild-URLs unten prüfen: sie zeigen aktuell auf https://henrischreibt.de/... (live Website).
+     Falls sich Dateien dort ändern, in Brevo unter "Bilder & Dateien" hochladen und die
+     src-Attribute ersetzen.
+  3. Platzhalter in [ECKIGEN KLAMMERN] durch echten Inhalt ersetzen.
+  4. Merge-Tags {{contact.FIRSTNAME}}, {{ mirror }}, {{ unsubscribe }} sind Brevo-Syntax
+     und werden automatisch ersetzt — nicht anfassen.
+  5. Anschrift im Footer ist bereits eingetragen (siehe Datenschutzerklärung). Alternativ
+     in den Brevo-Kampagneneinstellungen den automatischen Footer (Adresse + Abmelden)
+     aktivieren und den eigenen unteren Block entfernen.
+
+  Aufbau: Vorschautext → Header (Logo + Namenszug) → Hero (Ausgabe-Titel) →
+  Highlight-Artikel (bg-accent-soft, wie der ★-Highlight auf /artikel) →
+  2 weitere Artikel-Teaser (wie /blog) → CTA-Button → Presse-Erwähnungen → Footer.
+-->
+<!doctype html>
+<html lang="de" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Newsletter — Henri Wagner</title>
+<!--[if mso]>
+<noscript>
+<xml>
+<o:OfficeDocumentSettings>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+</noscript>
+<style>
+  * { font-family: Georgia, 'Times New Roman', serif !important; }
+</style>
+<![endif]-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap');
+
+  body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+  img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+  body { margin: 0; padding: 0; width: 100% !important; background-color: #faf9f6; }
+
+  a.link-accent { color: #8a7355; }
+  a.link-muted { color: #9a9890; }
+
+  @media screen and (max-width: 600px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 24px !important; padding-right: 24px !important; }
+    .stack-cell { display: block !important; width: 100% !important; padding-right: 0 !important; }
+    .stack-img { width: 100% !important; max-width: 200px; margin-bottom: 12px; }
+    .hero-title { font-size: 24px !important; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .bg-paper { background-color: #1a1a18 !important; }
+    .text-ink { color: #f2f0ea !important; }
+    .text-muted { color: #a8a59c !important; }
+    .border-hairline { border-color: #38362f !important; }
+    .bg-highlight { background-color: #322c20 !important; }
+    .btn-outline { border-color: #f2f0ea !important; color: #f2f0ea !important; }
+  }
+</style>
+</head>
+<body class="bg-paper" style="margin:0; padding:0; background-color:#faf9f6;">
+
+  <!-- Vorschautext (im Posteingang sichtbar, im Mailbody unsichtbar) -->
+  <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all; font-size:1px; line-height:1px;">
+    [Vorschautext: ein Satz, der Lust macht reinzuklicken — wird in der Inbox-Vorschau angezeigt.]
+    &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;
+  </div>
+
+  <center class="bg-paper" style="width:100%; background-color:#faf9f6;">
+  <!--[if mso]>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" align="center"><tr><td>
+  <![endif]-->
+  <div class="container" style="max-width:600px; margin:0 auto;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+      <!-- Im Browser ansehen -->
+      <tr>
+        <td class="px" style="padding:16px 24px 0; text-align:center;">
+          <a href="{{ mirror }}" class="link-muted" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#9a9890; text-decoration:underline;">Im Browser ansehen</a>
+        </td>
+      </tr>
+
+      <!-- Header: Eulen-Logo + Namenszug (wie Header.astro) -->
+      <tr>
+        <td class="px border-hairline" style="padding:28px 24px 20px; text-align:center; border-bottom:1px solid #e6e4de;">
+          <a href="https://henrischreibt.de" target="_blank">
+            <img src="https://henrischreibt.de/bilder/daumenkino/frame-01.png" width="60" height="60" alt="Henri Wagner" style="display:block; margin:0 auto 10px; width:60px; height:auto;">
+          </a>
+          <div class="text-ink" style="font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:18px; color:#1a1a18;">
+            Henri <span style="color:#9a9890;">Wagner</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Hero / Ausgabe-Titel (wie index.astro Headline) -->
+      <tr>
+        <td class="px" style="padding:44px 40px 4px; text-align:center;">
+          <p class="text-muted" style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9a9890;">
+            Newsletter · [Monat Jahr]
+          </p>
+          <h1 class="hero-title text-ink" style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-weight:400; font-size:28px; line-height:1.3; color:#1a1a18;">
+            [Titel dieser Ausgabe]
+          </h1>
+          <p class="text-ink" style="margin:16px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.65; color:#4a4843;">
+            Hallo {{contact.FIRSTNAME}}, [zwei bis drei Sätze, worum es in dieser Ausgabe geht.]
+          </p>
+        </td>
+      </tr>
+
+      <!-- Highlight-Artikel, wie der ★-Highlight auf /artikel (bg-accent-soft) -->
+      <tr>
+        <td class="px" style="padding:32px 24px 0;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg-highlight" style="background-color:#f4f0e6;">
+            <tr>
+              <td style="padding:26px 24px;">
+                <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#8a7355;">
+                  ★ Highlight
+                </p>
+                <a href="[LINK ZUM ARTIKEL]" style="text-decoration:none;">
+                  <h2 style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-weight:400; font-size:20px; line-height:1.35; color:#1a1a18;">
+                    [Titel des Highlight-Artikels]
+                  </h2>
+                </a>
+                <p style="margin:8px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.65; color:#4a4843;">
+                  [Ein bis zwei Sätze Kurzbeschreibung.]
+                </p>
+                <a href="[LINK ZUM ARTIKEL]" style="display:inline-block; margin-top:14px; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:600; color:#8a7355; text-decoration:none; border-bottom:1px solid #8a7355; padding-bottom:1px;">
+                  Weiterlesen →
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- ARTIKEL-BLOCK 1 — diesen ganzen <tr> für weitere Artikel kopieren (wie /blog-Liste) -->
+      <tr>
+        <td class="px" style="padding:0 24px;">
+          <div class="border-hairline" style="border-top:1px solid #e6e4de; padding:26px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="stack-cell" width="88" valign="top" style="width:88px; padding-right:16px;">
+                  <a href="[LINK ZUM ARTIKEL]">
+                    <img class="stack-img" src="[BILD-URL, ca. 176×176px]" width="88" height="88" alt="" style="display:block; width:88px; height:88px; object-fit:cover;">
+                  </a>
+                </td>
+                <td class="stack-cell" valign="top">
+                  <p style="margin:0 0 4px; font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#9a9890;">
+                    [Kategorie] · [Datum]
+                  </p>
+                  <a href="[LINK ZUM ARTIKEL]" style="text-decoration:none;">
+                    <h3 style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-weight:400; font-size:18px; line-height:1.35; color:#1a1a18;">
+                      [Artikel-Titel]
+                    </h3>
+                  </a>
+                  <p style="margin:6px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.6; color:#4a4843;">
+                    [Kurzbeschreibung, ein Satz.]
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <!-- /ARTIKEL-BLOCK 1 -->
+
+      <!-- ARTIKEL-BLOCK 2 — Kopie von Block 1 -->
+      <tr>
+        <td class="px" style="padding:0 24px;">
+          <div class="border-hairline" style="border-top:1px solid #e6e4de; padding:26px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td class="stack-cell" width="88" valign="top" style="width:88px; padding-right:16px;">
+                  <a href="[LINK ZUM ARTIKEL]">
+                    <img class="stack-img" src="[BILD-URL, ca. 176×176px]" width="88" height="88" alt="" style="display:block; width:88px; height:88px; object-fit:cover;">
+                  </a>
+                </td>
+                <td class="stack-cell" valign="top">
+                  <p style="margin:0 0 4px; font-family:Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#9a9890;">
+                    [Kategorie] · [Datum]
+                  </p>
+                  <a href="[LINK ZUM ARTIKEL]" style="text-decoration:none;">
+                    <h3 style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-weight:400; font-size:18px; line-height:1.35; color:#1a1a18;">
+                      [Artikel-Titel]
+                    </h3>
+                  </a>
+                  <p style="margin:6px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.6; color:#4a4843;">
+                    [Kurzbeschreibung, ein Satz.]
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <!-- /ARTIKEL-BLOCK 2 -->
+
+      <!-- CTA-Button (Kastenstil wie die Buttons auf der Website: Rahmen, keine Rundung) -->
+      <tr>
+        <td class="px border-hairline" style="padding:36px 24px 40px; text-align:center; border-bottom:1px solid #e6e4de;">
+          <a href="https://henrischreibt.de/artikel" class="btn-outline" style="display:inline-block; padding:12px 30px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:600; color:#1a1a18; text-decoration:none; border:1px solid #1a1a18;">
+            Alle Artikel ansehen
+          </a>
+        </td>
+      </tr>
+
+      <!-- Presse-Erwähnungen (wie PublishedIn.astro) -->
+      <tr>
+        <td class="px" style="padding:28px 24px 0; text-align:center;">
+          <p class="text-muted" style="margin:0 0 10px; font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#9a9890;">
+            Veröffentlicht u. a. in
+          </p>
+          <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#9a9890;">
+            <a href="https://www.spektrum.de" class="link-muted" style="color:#9a9890; text-decoration:none;">Spektrum.de</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.heise.de/ct/" class="link-muted" style="color:#9a9890; text-decoration:none;">c't Magazin</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.pro-physik.de/physik-journal" class="link-muted" style="color:#9a9890; text-decoration:none;">Physik Journal</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.alpenverein.de/DAV-Services/Panorama-Magazin/" class="link-muted" style="color:#9a9890; text-decoration:none;">DAV Panorama</a>
+          </p>
+        </td>
+      </tr>
+
+      <!-- Footer (wie Footer.astro) -->
+      <tr>
+        <td class="px border-hairline" style="padding:40px 24px 8px; margin-top:20px; border-top:1px solid #e6e4de; text-align:center;">
+          <p style="margin:0; font-family:'Newsreader', Georgia, 'Times New Roman', serif; font-size:16px; color:#1a1a18;">
+            Henri Wagner
+          </p>
+          <p class="text-muted" style="margin:6px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#9a9890;">
+            &copy; [Jahr] — Alle Rechte vorbehalten
+          </p>
+          <p style="margin:10px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+            <a href="https://henrischreibt.de/datenschutz" class="link-accent" style="color:#8a7355; text-decoration:underline;">Datenschutz</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.linkedin.com/in/henri-wagner-ab5056249/" class="link-accent" style="color:#8a7355; text-decoration:underline;">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.instagram.com/11henri9/" class="link-accent" style="color:#8a7355; text-decoration:underline;">Instagram</a>
+          </p>
+          <p class="text-muted" style="margin:20px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:1.7; color:#9a9890;">
+            Du erhältst diese E-Mail, weil du dich für den Newsletter von Henri Wagner angemeldet hast.<br>
+            Henri Wagner · Bunsenstraße 18 · 69115 Heidelberg<br>
+            <a href="{{ unsubscribe }}" class="link-muted" style="color:#9a9890; text-decoration:underline;">Newsletter abbestellen</a>
+          </p>
+        </td>
+      </tr>
+
+      <tr><td style="padding:32px 0 0; line-height:1px; font-size:1px;">&nbsp;</td></tr>
+
+    </table>
+  </div>
+  <!--[if mso]></td></tr></table><![endif]-->
+  </center>
+</body>
+</html>

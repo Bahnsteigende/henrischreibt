@@ -37,7 +37,9 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- TODO: action/Anbieter ergänzen, sobald der Newsletter-Anbieter feststeht -->
+    <!-- TODO: Formular an Brevo anbinden (z. B. via Netlify Function, die E-Mail + consent
+         entgegennimmt und den Kontakt per API in die temporäre Double-Opt-in-Liste einträgt —
+         siehe newsletter/email-doi-confirm.html für den Ablauf). API-Key niemals im Client-Code. -->
     <form class="w-full max-w-sm">
       <label for="newsletter-email" class="block text-sm font-medium">
         Newsletter abonnieren
@@ -58,6 +60,18 @@ const year = new Date().getFullYear();
           Anmelden
         </button>
       </div>
+      <label class="mt-3 flex items-start gap-2 text-xs text-ink/60">
+        <input
+          type="checkbox"
+          name="consent"
+          required
+          class="mt-0.5 h-3.5 w-3.5 shrink-0 border-ink/30"
+        />
+        <span>
+          Ich möchte den Newsletter von Henri Wagner erhalten und akzeptiere die
+          <a href="/datenschutz" class="underline hover:no-underline">Datenschutzerklärung</a>.
+        </span>
+      </label>
       <p class="mt-2 text-xs text-ink/50">Kein Spam, jederzeit abbestellbar.</p>
     </form>
   </div>
