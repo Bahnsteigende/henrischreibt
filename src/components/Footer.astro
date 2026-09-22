@@ -37,10 +37,10 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <!-- TODO: Formular an Brevo anbinden (z. B. via Netlify Function, die E-Mail + consent
-         entgegennimmt und den Kontakt per API in die temporäre Double-Opt-in-Liste einträgt —
-         siehe newsletter/email-doi-confirm.html für den Ablauf). API-Key niemals im Client-Code. -->
-    <form class="w-full max-w-sm">
+    <!-- Trägt den Kontakt via netlify/functions/newsletter-signup.js in die temporäre
+         Brevo-Liste ein; die dort eingerichtete Automation übernimmt den Rest
+         (DOI-Mail versenden, bei Klick in die echte Liste verschieben). -->
+    <form id="newsletter-form" class="w-full max-w-sm">
       <label for="newsletter-email" class="block text-sm font-medium">
         Newsletter abonnieren
       </label>
@@ -55,7 +55,7 @@ const year = new Date().getFullYear();
         />
         <button
           type="submit"
-          class="shrink-0 border border-ink px-4 py-2 text-sm font-medium hover:bg-ink hover:text-paper"
+          class="shrink-0 border border-ink px-4 py-2 text-sm font-medium hover:bg-ink hover:text-paper disabled:opacity-50"
         >
           Anmelden
         </button>
@@ -73,6 +73,52 @@ const year = new Date().getFullYear();
         </span>
       </label>
       <p class="mt-2 text-xs text-ink/50">Kein Spam, jederzeit abbestellbar.</p>
+      <p id="newsletter-status" class="mt-2 text-xs" role="status" aria-live="polite"></p>
     </form>
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
+  const status = document.getElementById("newsletter-status");
+
+  if (form && status) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+      const consent = (form.elements.namedItem("consent") as HTMLInputElement).checked;
+      const button = form.querySelector("button[type=submit]") as HTMLButtonElement;
+      const originalLabel = button.textContent;
+
+      button.disabled = true;
+      button.textContent = "Sende …";
+      status.textContent = "";
+
+      try {
+        const response = await fetch("/.netlify/functions/newsletter-signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, consent }),
+        });
+
+        if (response.ok) {
+          status.textContent =
+            "Fast geschafft — bitte bestätige die Anmeldung über den Link in der E-Mail, die gleich bei dir ankommt.";
+          status.className = "mt-2 text-xs text-accent";
+          form.reset();
+        } else {
+          const data = await response.json().catch(() => ({}));
+          status.textContent = data.error ?? "Anmeldung fehlgeschlagen, bitte später erneut versuchen.";
+          status.className = "mt-2 text-xs text-red-700";
+        }
+      } catch {
+        status.textContent = "Anmeldung fehlgeschlagen, bitte später erneut versuchen.";
+        status.className = "mt-2 text-xs text-red-700";
+      } finally {
+        button.disabled = false;
+        button.textContent = originalLabel;
+      }
+    });
+  }
+</script>
