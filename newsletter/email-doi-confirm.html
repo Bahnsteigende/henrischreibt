@@ -1,33 +1,4 @@
-<!--
-  Double-Opt-In-Bestätigungsmail für Brevo — abgestimmt auf das Design von henrischreibt.de
 
-  WICHTIG ZUM SETUP
-  Das Newsletter-Formular im Footer (Footer.astro) ist ein eigenes, selbstgebautes
-  Formular — kein natives Brevo-Formular. Deshalb funktioniert der Bestätigungslink
-  hier NICHT über den Brevo-Merge-Tag "Double-Opt-in-Link" (den gibt's nur im
-  Drag&Drop-Editor für Brevo-eigene Formulare), sondern über eine Automation:
-
-  1. Formular-Submit → per API einen Kontakt in eine TEMPORÄRE Liste eintragen
-     (z. B. "TEMP_DOUBLE_OPTIN"). Diese Liste darf sonst nie beschickt werden.
-  2. Automation in Brevo: Trigger "Kontakt zu Liste hinzugefügt" (temporäre Liste)
-     → sendet diese Mail hier.
-  3. Der Button unten verlinkt auf eine FESTE, absolute URL auf der eigenen Website:
-     https://henrischreibt.de/newsletter/bestaetigt (Seite existiert bereits, siehe
-     src/pages/newsletter/bestaetigt.astro).
-  4. In der Automation: Schritt "Warten bis Link geklickt" mit Filter
-     Link-URL "enthält" exakt diese URL (nicht "ist exakt", wegen Link-Tracking-Parametern).
-  5. Bei Klick: Kontakt in die echte Newsletter-Liste verschieben, aus der temporären
-     Liste entfernen, optional die zweite Datei (email-doi-success.html) als
-     Bestätigungsmail hinterherschicken.
-  6. Bei Nicht-Klick nach Frist: Kontakt blocklisten (Marketing-Kampagnen).
-
-  Laut Brevo bitte NICHT personalisieren (Kontakt-Attribute sind zu diesem Zeitpunkt
-  noch leer) und KEINE Werbe-/Promo-Inhalte einbauen — nur reine Zustimmungsbestätigung.
-
-  Der Einwilligungstext unten ist wortgleich mit der Checkbox im Footer-Formular
-  (src/components/Footer.astro) — Brevo empfiehlt das als Nachweis in den
-  Transaktions-Logs. Falls der Checkbox-Text sich mal ändert, hier nachziehen.
--->
 <!doctype html>
 <html lang="de" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -86,7 +57,7 @@
       <tr>
         <td class="px border-hairline" style="padding:28px 24px 20px; text-align:center; border-bottom:1px solid #e6e4de;">
           <a href="https://henrischreibt.de" target="_blank">
-            <img src="https://henrischreibt.de/bilder/daumenkino/frame-01.png" width="60" height="60" alt="Henri Wagner" style="display:block; margin:0 auto 10px; width:60px; height:auto;">
+            <img src="https://henrischreibt.de/bilder/daumenkino/frame-01.png" width="60" height="60" alt="Vogel" style="display:block; margin:0 auto 10px; width:60px; height:auto;">
           </a>
           <div class="text-ink" style="font-family:Arial, Helvetica, sans-serif; font-weight:700; font-size:18px; color:#1a1a18;">
             Henri <span style="color:#9a9890;">Wagner</span>
@@ -104,7 +75,7 @@
             Fast geschafft
           </h1>
           <p class="text-ink" style="margin:16px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.65; color:#4a4843;">
-            Du hast dich gerade für den Newsletter von Henri Wagner angemeldet. Bitte bestätige das noch mit einem Klick auf den Button unten — erst dann geht's los.
+            Möchtest du wirklich ab und an eine Mail von mir bekommen? o_O
           </p>
         </td>
       </tr>
@@ -116,7 +87,7 @@
             <tr>
               <td style="padding:18px 20px;">
                 <p class="text-ink" style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:1.6; color:#4a4843;">
-                  Mit Klick auf „Abo bestätigen" stimmst du zu:<br>
+                  Mit Klick auf „Anmeldung bestätigen" stimmst du zu:<br>
                   „Ich möchte den Newsletter von Henri Wagner erhalten und akzeptiere die <a href="https://henrischreibt.de/datenschutz" style="color:#8a7355;">Datenschutzerklärung</a>."
                 </p>
               </td>
@@ -129,7 +100,7 @@
       <tr>
         <td class="px" style="padding:32px 24px 8px; text-align:center;">
           <a href="https://henrischreibt.de/newsletter/bestaetigt" class="btn-solid" style="display:inline-block; padding:14px 34px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight:600; color:#faf9f6; background-color:#1a1a18; text-decoration:none;">
-            Ja, Abo bestätigen
+            Ja, Anmeldung bestätigen
           </a>
         </td>
       </tr>
@@ -138,7 +109,7 @@
       <tr>
         <td class="px" style="padding:24px 24px 40px; text-align:center;">
           <p class="text-muted" style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.6; color:#9a9890;">
-            Der Link ist [z. B. 48 Stunden] gültig. Wenn du dich nicht selbst angemeldet hast, kannst du diese E-Mail einfach ignorieren — es passiert nichts weiter.
+            Der Link ist 7 Tage gültig. Wenn du dich nicht selbst angemeldet hast, kannst du diese E-Mail einfach ignorieren — es passiert nichts weiter.
           </p>
         </td>
       </tr>
